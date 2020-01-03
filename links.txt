@@ -1,0 +1,11 @@
+Trait icons:
+https://raw.communitydragon.org/latest/game/assets/ux/fonts/texticons.png
+
+Items:
+http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/
+
+Champion splashes:
+https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/
+
+tft json:
+https://raw.communitydragon.org/latest/cdragon/tft/en_us.json

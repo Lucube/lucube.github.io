@@ -1,0 +1,5 @@
+x  borders for tables
+x  zoom in images of multiple champions in one cell
+   put tables next to each other on one page without scrolling
+   api connection
+   add missing icons through api   
