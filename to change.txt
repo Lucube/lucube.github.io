@@ -1,5 +1,8 @@
 x  borders for tables
 x  zoom in images of multiple champions in one cell
-   put tables next to each other on one page without scrolling
+x  put tables next to each other on one page without scrolling
 x  api connection (files from communitydragon now)
-x  add missing icons through api (communitydragon)   
+x  add missing icons through api (communitydragon)
+   add borders to champion icons with lvl indication
+   add descriptions to items, traits
+   add hover descriptions at champions
