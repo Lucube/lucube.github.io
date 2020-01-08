@@ -5,4 +5,5 @@ x  api connection (files from communitydragon now)
 x  add missing icons through api (communitydragon)
    add borders to champion icons with lvl indication
    add descriptions to items, traits
-   add hover descriptions at champions
+   add hover descriptions at champions and items
+x  update to 10.1
