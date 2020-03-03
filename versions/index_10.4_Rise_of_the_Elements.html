@@ -1,0 +1,675 @@
+<!doctype html>
+<html>
+<head>
+  <title>TFT Cheat Sheet</title>  
+  <link rel="icon" href="https://raw.communitydragon.org/latest/game/assets/ux/tft/stageicons/announce_icon_planning.png"></link>
+  <style>
+    * {
+	  padding: 0px;
+	  margin: 0px;
+	  text-align: center;
+	  font-family: Arial;
+	  color: white;
+	  font-size: 0px;
+	}
+	body {
+	  background: rgb(29,29,31);
+	}
+	table {
+	  display: inline-block;
+	}
+	table, th, td {
+	  border: 3px solid black;
+	  border-collapse: collapse;
+	}
+	th {
+      font-size: 8px;
+	}
+	.txt {
+	  font-size: 16px;
+	}
+	img {
+	  width: 36px;
+	  <!--border-radius: 20%;-->
+	}
+	.doublecell {
+	  width: 18px;
+	  height: 36px;
+	  overflow: hidden;
+	  display: inline-block;
+	}
+	.doublecellimg {
+	  width: 36px;
+	  height: 36px;
+	  margin: 0 -9px;
+	}
+	.triplecell {
+	  width: 12px;
+	  height: 36px;
+	  overflow: hidden;
+	  display: inline-block;
+	}
+	.triplecellimg {
+	  width: 36px;
+	  height: 36px;
+	  margin: 0 -9px;
+	}
+	.tableheader {
+	  width: 48px;
+	}
+	.icon-image {
+	  object-fit: none;
+	  object-position: 0 0;
+	  width: 24px;
+	  height: 24px;
+	}
+	#crystal {
+	  object-position: -96px -240px;
+	}
+	#desert {
+	  object-position: -72px -144px;
+	}
+	#electric {
+	  object-position: -72px -240px;
+	}
+	#glacial {
+	  object-position: -24px -144px;
+	}
+	#inferno {
+	  object-position: -0px -240px;
+	}
+	#light {
+	  object-position: -96px -216px;
+	}
+	#lunar {
+	  object-position: -24px -264px;
+	}
+	#steel {
+	  object-position: -48px -216px;
+	}
+	#mountain {
+	  object-position: -24px -216px;
+	}
+	#ocean {
+	  object-position: -0px -192px;
+	}
+	#poison {
+	  object-position: -96px -192px;
+	}
+	#shadow {
+	  object-position: -72px -192px;
+	}
+	#cloud {
+	  object-position: -96px -168px;
+	}
+	#woodland {
+	  object-position: -0px -168px;
+	}
+	#alchemist {
+	  object-position: -24px -168px;
+	}
+	#assassin {
+	  object-position: -24px -192px;
+	}
+	#avatar {
+	  object-position: -48px -168px;
+	}
+	#berserker {
+	  object-position: -0px -216px;
+	}
+	#blademaster {
+	  object-position: -48px -192px;
+	}
+	#summoner {
+	  object-position: -72px -168px;
+	}
+	#druid {
+	  object-position: -48px -144px;
+	}
+	#mage {
+	  object-position: -0px -144px;
+	}
+	#mystic {
+	  object-position: -96px -144px;
+	}
+	#predator {
+	  object-position: -96px -120px;
+	}
+	#ranger {
+	  object-position: -72px -216px;
+	}
+	#warden {
+	  object-position: -72px -120px;
+	}
+	#soulbound {
+	  object-position: -0px -264px;
+	}
+	#lvl {
+	  display: none;
+	}
+	.champion-border {
+	  width: 36px;
+	  height: 42px;
+	  overflow: hidden;
+	  position: relative;
+	  display: inline-block;
+	}
+	.champion-border-half {
+	  width: 18px;
+	  height: 42px;
+	  overflow: hidden;
+	  position: relative;
+	  display: inline-block;
+	}
+	.champion-border-third {
+	  width: 12px;
+	  height: 42px;
+	  overflow: hidden;
+	  position: relative;
+	  display: inline-block;
+	}
+	.champion-border-size {
+	  width: 80px;
+	  height: 312px;
+	  position: absolute;
+	}
+	.champion-border-size-half {
+	  width: 40px;
+	  height: 312px;
+	  position: absolute;
+	}
+	.champion-border-size-third {
+	  width: 27px;
+	  height: 312px;
+	  position: absolute;
+	}
+	#tier1 {
+	  margin: -42px 0 0 0;
+    }
+	#tier2 {
+	  margin: -42px 0 0 -36px;
+    }
+	#tier2-half {
+	  margin: -42px 0 0 -18px;
+	}
+	#tier2-third {
+	  margin: -42px 0 0 -12px;
+	}
+	#tier3 {
+	  margin: -126px 0 0 0;
+    }
+	#tier4 {
+	  margin: -126px 0 0 -36px
+    }
+	#tier4-half {
+	  margin: -126px 0 0 -18px;
+	}
+	#tier5 {
+	  margin: -210px 0 0 0;
+    }
+	#tier7 {
+	  margin: -210px 0 0 -36px;
+    }
+	#tier7-half {
+	  margin: -210px 0 0 -18px;
+	}
+  </style>
+</head>
+<body>
+  <table>
+    <tr>
+	  <th><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_unknown.png" class="tableheader"></img></th>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/icon_bfsword.png" class="tableheader"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_recurvebow.png" class="tableheader"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/icon_needlesslylargerod.png" class="tableheader"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/icon_tearofthegoddess.png" class="tableheader"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/icon_giantsbelt.png" class="tableheader"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_chainvest.png" class="tableheader"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_negatroncloak.png" class="tableheader"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_brawlersglove.png" class="tableheader"></img></td>
+      <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_spatula.png" class="tableheader"></img></td>
+	</tr>
+	<tr>
+	  <th><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/icon_bfsword.png" class="tableheader"></img></th>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_deathblade.png"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_giantslayer.png"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_hextechgunblade.png"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_spearofshojin.png"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_zekesherald.png"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_guardianangel.png"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_bloodthirster.png"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_infinityedge.png"></img></td>
+      <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_youmuusghostblade.png"</img></td>
+	</tr>
+	<tr>
+	  <th><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_recurvebow.png" class="tableheader"></img></th>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_giantslayer.png"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_rapidfirecannon.png"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_guinsoosrageblade.png"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_statikkshiv.png"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_titanichydra.png"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_titansresolve.tft_1001_itemsupdate.png"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_runaanshurricane.png"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_mortalreminder.png"></img></td>
+      <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_bladeoftheruinedking.png"></img></td>
+	</tr>
+	<tr>
+	  <th><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/icon_needlesslylargerod.png" class="tableheader"></img></th>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_hextechgunblade.png"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_guinsoosrageblade.png"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_rabadonsdeathcap.png"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_ludensecho.png"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_morellonomicon.png"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_locketoftheironsolari.png"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_ionicspark.png"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_jeweled_gauntlet.png"></img></td>
+      <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_infernocinder.png"></img></td>
+	</tr>
+	<tr>
+	  <th><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/icon_tearofthegoddess.png" class="tableheader"></img></th>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_spearofshojin.png"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_statikkshiv.png"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_ludensecho.png"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_seraphsembrace.png"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_redemption.png"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_frozenheart.png"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_hush.png"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_handofjustice.png"></img></td>
+      <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_magescap.png"></img></td>
+	</tr>
+	<tr>
+	  <th><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/icon_giantsbelt.png" class="tableheader"></img></th>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_zekesherald.png"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_titanichydra.png"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_morellonomicon.png"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_redemption.png"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_warmogsarmor.png"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_redbuff.png"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_zephyr.png"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_backhand.png"></img></td>
+      <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_frozenmallet.png"></img></td>
+	</tr>
+	<tr>
+	  <th><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_chainvest.png" class="tableheader"></img></th>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_guardianangel.png"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_titansresolve.tft_1001_itemsupdate.png"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_locketoftheironsolari.png"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_frozenheart.png"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_redbuff.png"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_bramblevest.tft_1001_itemsupdate.png"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_swordbreaker.png"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_iceborngauntlet.png"></img></td>
+      <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_wardensmail.png"></img></td>
+	</tr>
+	<tr>
+	  <th><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_negatroncloak.png" class="tableheader"></img></th>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_bloodthirster.png"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_runaanshurricane.png"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_ionicspark.png"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_hush.png"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_zephyr.png"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_swordbreaker.png"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_dragonsclaw.png"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_mercurial.png"></img></td>
+      <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_talismanoflight.png"></img></td>
+	</tr>
+	<tr>
+	  <th><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_brawlersglove.png" class="tableheader"></img></th>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_infinityedge.png"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_mortalreminder.png"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_jeweled_gauntlet.png"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_handofjustice.png"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_backhand.png"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_iceborngauntlet.png"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_mercurial.png"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_thiefsgloves.png"></img></td>
+      <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_berserkeraxe.png"></img></td>
+	</tr>
+	<tr>
+	  <th><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_spatula.png" class="tableheader"></img></th>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_youmuusghostblade.png"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_bladeoftheruinedking.png"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_infernocinder.png"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_magescap.png"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_frozenmallet.png"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_wardensmail.png"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_talismanoflight.png"></img></td>
+	  <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_berserkeraxe.png"></img></td>
+      <td><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_forceofnature.png"></img></td>
+	</tr>
+  </table>
+  
+  <table>
+    <tr>
+	  <th></th>
+	  <th>Crystal</th>
+	  <th>Desert</th>
+	  <th>Electric</th>
+	  <th>Glacial</th>
+	  <th>Inferno</th>
+	  <th>Light</th>
+	  <th>Lunar</th>
+	  <th>Steel</th>
+	  <th>Mountain</th>
+	  <th>Ocean</th>
+	  <th>Poison</th>
+	  <th>Shadow</th>
+	  <th>Cloud</th>
+	  <th>Woodland</th>
+	</tr>
+    <tr>
+	  <th class="tableheader"></th>
+	  <th><img src="https://raw.communitydragon.org/latest/game/assets/ux/fonts/texticons.png" id="crystal" class="icon-image"></img></th>
+	  <th><img src="https://raw.communitydragon.org/latest/game/assets/ux/fonts/texticons.png" id="desert" class="icon-image"></img></th>
+      <th><img src="https://raw.communitydragon.org/latest/game/assets/ux/fonts/texticons.png" id="electric" class="icon-image"></img></th>
+      <th><img src="https://raw.communitydragon.org/latest/game/assets/ux/fonts/texticons.png" id="glacial" class="icon-image"></img></th>	  
+	  <th><img src="https://raw.communitydragon.org/latest/game/assets/ux/fonts/texticons.png" id="inferno" class="icon-image"></img></th>
+	  <th><img src="https://raw.communitydragon.org/latest/game/assets/ux/fonts/texticons.png" id="light" class="icon-image"></img></th>
+	  <th><img src="https://raw.communitydragon.org/latest/game/assets/ux/fonts/texticons.png" id="lunar" class="icon-image"></img></th>
+	  <th><img src="https://raw.communitydragon.org/latest/game/assets/ux/fonts/texticons.png" id="steel" class="icon-image"></img></th>
+	  <th><img src="https://raw.communitydragon.org/latest/game/assets/ux/fonts/texticons.png" id="mountain" class="icon-image"></img></th>
+	  <th><img src="https://raw.communitydragon.org/latest/game/assets/ux/fonts/texticons.png" id="ocean" class="icon-image"></img></th>
+	  <th><img src="https://raw.communitydragon.org/latest/game/assets/ux/fonts/texticons.png" id="poison" class="icon-image"></img></th>
+	  <th><img src="https://raw.communitydragon.org/latest/game/assets/ux/fonts/texticons.png" id="shadow" class="icon-image"></img></th>
+	  <th><img src="https://raw.communitydragon.org/latest/game/assets/ux/fonts/texticons.png" id="cloud" class="icon-image"></img></th>
+	  <th><img src="https://raw.communitydragon.org/latest/game/assets/ux/fonts/texticons.png" id="woodland" class="icon-image"></img></th>
+	</tr>
+	<tr>
+	  <th><img src="https://raw.communitydragon.org/latest/game/assets/ux/fonts/texticons.png" id="alchemist" class="icon-image"></img></th>
+	  <td></td>
+	  <td></td>
+	  <td></td>
+	  <td></td>
+	  <td></td>
+	  <td></td>
+	  <td></td>
+	  <td></td>
+	  <td></td>
+	  <td></td>
+	  <td><div class="champion-border"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size" id="tier5"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_singed/hud/tft2_singed_square.tft_set2.png"></img></img></div></td>
+	  <td></td>
+	  <td></td>
+	  <td></td>
+	</tr>
+	<tr>
+	  <th><img src="https://raw.communitydragon.org/latest/game/assets/ux/fonts/texticons.png" id="assassin" class="icon-image"></img></th>
+	  <td></td>
+	  <td><div class="champion-border"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size" id="tier4"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_khazix/hud/tft2_khazix_square.tft_set2.png"></img></img></div></td>
+	  <td><div class="champion-border"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size" id="tier5"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_zed/hud/tft2_zed_square_0.tft_set2.png"></img></img></div></td>
+	  <td></td>
+	  <td><div class="champion-border-half"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size-half" id="tier1"><div class="doublecell"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_diana/hud/tft2_diana_square.tft_set2.png" class="doublecellimg"></img></div></img></div><div class="champion-border-half"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size-half" id="tier3"><div class="doublecell"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_qiyana/hud/tft2_qiyana_square.tft_set2.png" class="doublecellimg"></img></div></img></div></td>
+	  <td></td>
+	  <td></td>
+	  <td><div class="champion-border"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size" id="tier3"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_nocturne/hud/tft2_nocturne_square.tft_set2.png"></img></img></div></td>
+	  <td><div class="champion-border"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size" id="tier3"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_qiyana/hud/tft2_qiyana_square.tft_set2.png"></img></img></div></td>
+	  <td><div class="champion-border"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size" id="tier3"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_qiyana/hud/tft2_qiyana_square.tft_set2.png"></img></img></div></td>
+	  <td></td>
+	  <td></td>
+	  <td><div class="champion-border"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size" id="tier3"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_qiyana/hud/tft2_qiyana_square.tft_set2.png"></img></img></div></td>
+	  <td><div class="champion-border"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size" id="tier2"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_leblanc/hud/tft2_leblanc_square.tft_set2.png"></img></img></div></td>
+	</tr>
+	<tr>
+	  <th><img src="https://raw.communitydragon.org/latest/game/assets/ux/fonts/texticons.png" id="avatar" class="icon-image"></img></th>
+	  <td><div class="champion-border"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size" id="tier7"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_luxcrystal/hud/tft2_luxcrystal_square.tft_set2.png"></img></img></div></td>
+	  <td></td>
+	  <td><div class="champion-border"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size" id="tier7"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_luxelectric/hud/tft2_luxelectric_square.tft_set2.png"></img></img></div></td>
+	  <td><div class="champion-border"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size" id="tier7"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_luxglacial/hud/tft2_luxglacial_square.tft_set2.png"></img></img></div></td>
+	  <td><div class="champion-border"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size" id="tier7"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_luxinferno/hud/tft2_luxinferno_square.tft_set2.png"></img></img></div></td>
+	  <td><div class="champion-border"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size" id="tier7"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_luxlight/hud/tft2_luxlight_square.tft_set2.png"></img></img></div></td>
+	  <td></td>
+	  <td><div class="champion-border"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size" id="tier7"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_luxmetal/hud/tft2_luxmetal_square.tft_set2.png"></img></img></div></td>
+	  <td></td>
+	  <td><div class="champion-border"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size" id="tier7"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_luxocean/hud/tft2_luxocean_square.tft_set2.png"></img></img></div></td>
+	  <td></td>
+	  <td><div class="champion-border"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size" id="tier7"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_luxshadow/hud/tft2_luxshadow_square.tft_set2.png"></img></img></div></td>
+	  <td><div class="champion-border"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size" id="tier7"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_luxwind/hud/tft2_luxwind_square.tft_set2.png"></img></img></div></td>
+	  <td><div class="champion-border"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size" id="tier7"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_luxwoodland/hud/tft2_luxwoodland_square.tft_set2.png"></img></img></div></td>
+	</tr>
+	<tr>
+	  <th><img src="https://raw.communitydragon.org/latest/game/assets/ux/fonts/texticons.png" id="berserker" class="icon-image"></img></th>
+	  <td></td>
+	  <td><div class="champion-border"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size" id="tier1"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_renekton/hud/tft2_renekton_square.tft_set2.png"></img></img></div></td>
+	  <td><div class="champion-border"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size" id="tier2"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_volibear/hud/tft2_volibear_square.tft_set2.png"></img></img></div></td>
+	  <td><div class="champion-border-half"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size-half" id="tier2-half"><div class="doublecell"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_volibear/hud/tft2_volibear_square.tft_set2.png" class="doublecellimg"></img></div></img></div><div class="champion-border-half"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size-half" id="tier4-half"><div class="doublecell"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_olaf/hud/tft2_olaf_square.tft_set2.png" class="doublecellimg"></img></div></img></div></td>
+	  <td></td>
+	  <td><div class="champion-border"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size" id="tier2"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_jax/hud/tft2_jax_square.tft_set2.png"></img></img></div></td>
+	  <td></td>
+	  <td></td>
+	  <td></td>
+	  <td></td>
+	  <td><div class="champion-border"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size" id="tier3"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_drmundo/hud/tft2_drmundo_square.tft_set2.png"></img></img></div></td>
+	  <td><div class="champion-border"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size" id="tier3"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_sion/hud/tft2_sion_square.tft_set2.png"></img></img></div></td>
+	  <td></td>
+	  <td></td>
+	</tr>
+	<tr>
+	  <th><img src="https://raw.communitydragon.org/latest/game/assets/ux/fonts/texticons.png" id="blademaster" class="icon-image"></img></th>
+	  <td></td>
+	  <td><div class="champion-border"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size" id="tier3"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_sivir/hud/tft2_sivir_square.tft_set2.png"></img></img></div></td>
+	  <td></td>
+	  <td></td>
+	  <td></td>
+	  <td><div class="champion-border"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size" id="tier3"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_aatrox/hud/tft2_aatrox_square.tft_set2.png"></img></img></div></td>
+	  <td></td>
+	  <td></td>
+	  <td></td>
+	  <td></td>
+	  <td></td>
+	  <td><div class="champion-border"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size" id="tier5"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_masteryi/hud/tft2_masteryi_square.tft_set2.png"></img></img></div></td>
+	  <td><div class="champion-border"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size" id="tier2"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_yasuo/hud/tft2_yasuo_square.tft_set2.png"></img></img></div></td>
+	  <td></td>
+	</tr>
+	<tr>
+	  <th><img src="https://raw.communitydragon.org/latest/game/assets/ux/fonts/texticons.png" id="summoner" class="icon-image"></img></th>
+	  <td></td>
+	  <td><div class="champion-border"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size" id="tier3"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_azir/hud/tft2_azir_square.tft_set2.png"></img></img></div></td>
+	  <td><div class="champion-border"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size" id="tier5"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_zed/hud/tft2_zed_square_0.tft_set2.png"></img></img></div></td>
+	  <td></td>
+	  <td><div class="champion-border-half"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size-half" id="tier1"><div class="doublecell"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_zyra/hud/tft2_zyra_square.tft_set2.png" class="doublecellimg"></img></div></img></div><div class="champion-border-half"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size-half" id="tier4-half"><div class="doublecell"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_annie/hud/tft2_annie_square.tft_set2.png" class="doublecellimg"></img></div></img></div></td>
+	  <td><div class="champion-border"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size" id="tier4"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_yorick/hud/tft2_yorick_square.tft_set2.png"></img></img></div></td>
+	  <td></td>
+	  <td></td>
+	  <td></td>
+	  <td></td>
+	  <td></td>
+	  <td><div class="champion-border"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size" id="tier2"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_malzahar/hud/tft2_malzahar_square.tft_set2.png"></img></img></div></td>
+	  <td></td>
+	  <td></td>
+	</tr>
+	<tr>
+	  <th><img src="https://raw.communitydragon.org/latest/game/assets/ux/fonts/texticons.png" id="druid" class="icon-image"></img></th>
+	  <td></td>
+	  <td></td>
+	  <td></td>
+	  <td></td>
+	  <td></td>
+	  <td></td>
+	  <td></td>
+	  <td></td>
+	  <td></td>
+	  <td></td>
+	  <td></td>
+	  <td></td>
+	  <td></td>
+	  <td><div class="champion-border-third"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size-third" id="tier1"><div class="triplecell"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_ivern/hud/tft2_ivern_square.tft_set2.png" class="triplecellimg"></img></div></img></div><div class="champion-border-third"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size-third" id="tier1"><div class="triplecell"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_maokai/hud/tft2_maokai_square.tft_set2.png" class="triplecellimg"></img></div></img></div><div class="champion-border-third"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size-third" id="tier2-third"><div class="triplecell"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_neeko/hud/tft2_neeko_square.tft_set2.png" class="triplecellimg"></img></div></img></div></td>
+	</tr>
+	<tr>
+	  <th><img src="https://raw.communitydragon.org/latest/game/assets/ux/fonts/texticons.png" id="mage" class="icon-image"></img></th>
+	  <td></td>
+	  <td></td>
+	  <td></td>
+	  <td></td>
+	  <td><div class="champion-border"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size" id="tier4"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_brand/hud/tft2_brand_square_0.tft_set2.png"></img></img></div></td>
+	  <td></td>
+	  <td></td>
+	  <td></td>
+	  <td><div class="champion-border"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size" id="tier1"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_taliyah/hud/tft2_taliyah_square.tft_set2.png"></img></img></div></td>
+	  <td><div class="champion-border-half"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size-half" id="tier1"><div class="doublecell"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_vladimir/hud/tft2_vladimir_square.tft_set2.png" class="doublecellimg"></img></div></img></div><div class="champion-border-half"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size-half" id="tier2-half"><div class="doublecell"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_syndra/hud/tft2_syndra_square.tft_set2.png" class="doublecellimg"></img></div></img></div></td>
+	  <td></td>
+	  <td><div class="champion-border"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size" id="tier3"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_veigar/hud/tft2_veigar_square.tft_set2.png"></img></img></div></td>
+	  <td></td>
+	  <td><div class="champion-border"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size" id="tier2"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_leblanc/hud/tft2_leblanc_square.tft_set2.png"></img></img></div></td>
+	</tr>
+	<tr>
+	  <th><img src="https://raw.communitydragon.org/latest/game/assets/ux/fonts/texticons.png" id="mystic" class="icon-image"></img></th>
+	  <td></td>
+	  <td></td>
+	  <td></td>
+	  <td></td>
+	  <td></td>
+	  <td><div class="champion-border"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size" id="tier3"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_soraka/hud/tft2_soraka_square.tft_set2.png"></img></img></div></td>
+	  <td><div class="champion-border"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size" id="tier3"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_karma/hud/tft2_karma_square.tft1001expansioncontent.png"></img></img></div></td>
+	  <td></td>
+	  <td></td>
+	  <td><div class="champion-border"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size" id="tier5"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_nami/hud/tft2_nami_square.tft_set2.png"></img></img></div></td>
+	  <td></td>
+	  <td><div class="champion-border"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size" id="tier5"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_masteryi/hud/tft2_masteryi_square.tft_set2.png"></img></img></div></td>
+	  <td><div class="champion-border"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size" id="tier4"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_janna/hud/tft2_janna_square.tft_set2.png"></img></img></div></td>
+	  <td></td>
+	</tr>
+	<tr>
+	  <th><img src="https://raw.communitydragon.org/latest/game/assets/ux/fonts/texticons.png" id="predator" class="icon-image"></img></th>
+	  <td><div class="champion-border"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size" id="tier2"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_skarner/hud/tft2_skarner_square.tft_set2.png"></img></img></div></td>
+	  <td></td>
+	  <td></td>
+	  <td><div class="champion-border"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size" id="tier1"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_warwick/hud/tft2_warwick_square_0.tft_set2.png"></img></img></div></td>
+	  <td></td>
+	  <td></td>
+	  <td></td>
+	  <td><div class="champion-border"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size" id="tier2"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_reksai/hud/tft2_reksai_square.tft_set2.png"></img></img></div></td>
+	  <td></td>
+	  <td></td>
+	  <td><div class="champion-border"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size" id="tier1"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_kogmaw/hud/tft2_kogmaw_square.tft_set2.png"></img></img></div></td>
+	  <td></td>
+	  <td></td>
+	  <td></td>
+	</tr>
+	<tr>
+	  <th><img src="https://raw.communitydragon.org/latest/game/assets/ux/fonts/texticons.png" id="ranger" class="icon-image"></img></img></div></th>
+	  <td><div class="champion-border"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size" id="tier4"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_ashe/hud/tft2_ashe_square.tft_set2.png"></img></img></div></td>
+	  <td></td>
+	  <td></td>
+	  <td><div class="champion-border"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size" id="tier3"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_ezreal/hud/tft2_ezreal_square.tft_set2.png"></img></img></div></td>
+	  <td><div class="champion-border-half"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size-half" id="tier2-half"><div class="doublecell"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_varus/hud/tft2_varus_square_0.tft_set2.png" class="doublecellimg"></img></div></img></div><div class="champion-border-half"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size-half" id="tier3"><div class="doublecell"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_kindred/hud/tft2_kindred_square.tft_set2.png" class="doublecellimg"></img></div></img></div></td>
+	  <td><div class="champion-border"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size" id="tier1"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_vayne/hud/tft2_vayne_square.tft_set2.png"></img></img></div></td>
+	  <td></td>
+	  <td></td>
+	  <td></td>
+	  <td></td>
+	  <td><div class="champion-border"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size" id="tier4"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_twitch/hud/tft2_twitch_square.tft_set2.png"></img></img></div></td>
+	  <td><div class="champion-border"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size" id="tier3"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_kindred/hud/tft2_kindred_square.tft_set2.png"></img></img></div></td>
+	  <td></td>
+	  <td></td>
+	</tr>
+	<tr>
+	  <th><img src="https://raw.communitydragon.org/latest/game/assets/ux/fonts/texticons.png" id="soulbound" class="icon-image"></img></th>
+	  <td></td>
+	  <td></td>
+	  <td></td>
+	  <td></td>
+	  <td></td>
+	  <td><div class="champion-border"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size" id="tier4"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_lucian/hud/tft2_lucian_square.tft923expansioncontent.png"></img></img></div></td>
+	  <td></td>
+	  <td></td>
+	  <td></td>
+	  <td></td>
+	  <td></td>
+	  <td><div class="champion-border"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size" id="tier2"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_senna/hud/tft2_senna_square.tft923expansioncontent.png"></img></img></div></td>
+	  <td></td>
+	  <td></td>
+	</tr>
+	<tr>
+	  <th><img src="https://raw.communitydragon.org/latest/game/assets/ux/fonts/texticons.png" id="warden" class="icon-image"></img></th>
+	  <td><div class="champion-border"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size" id="tier5"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_taric/hud/tft2_taric_square.tft_set2.png"></img></img></div></td>
+	  <td></td>
+	  <td><div class="champion-border"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size" id="tier1"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_ornn/hud/tft2_ornn_square.tft_set2.png"></img></img></div></td>
+	  <td><div class="champion-border"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size" id="tier2"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_braum/hud/tft2_braum_square.tft_set2.png"></img></img></div></td>
+	  <td><div class="champion-border"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size" id="tier5"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_amumu/hud/tft2_amumu_square.tft924amumu.png"></img></img></div></td>
+	  <td><div class="champion-border"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size" id="tier1"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_nasus/hud/tft2_nasus_square.tft_set2.png"></img></img></div></td>
+	  <td><div class="champion-border"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size" id="tier1"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_leona/hud/tft2_leona_square.tft1001expansioncontent.png"></img></img></div></td>
+	  <td></td>
+	  <td><div class="champion-border"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size" id="tier4"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_malphite/hud/tft2_malphite_square.tft_set2.png"></img></img></div></td>
+	  <td><div class="champion-border-half"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size-half" id="tier2-half"><div class="doublecell"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_thresh/hud/tft2_thresh_square.tft_set2.png" class="doublecellimg"></img></div></img></div><div class="champion-border-half"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size-half" id="tier3"><div class="doublecell"><img src="https://raw.communitydragon.org/latest/game/assets/characters/tft2_nautilus/hud/tft2_nautilus_square.tft_set2.png" class="doublecellimg"></img></div></img></div></td>
+	  <td></td>
+	  <td></td>
+	  <td></td>
+	  <td></td>
+	</tr>
+  </table>
+  
+  <table id="lvl">
+	<tr>
+	  <th class="txt">Tier 1</th>
+	  <td><img src="Champions\Diana_3.jpg"></img></td>
+	  <td><img src="Champions\Ivern_0.jpg"></img></td>
+	  <td><img src="Champions\KogMaw_1.jpg"></img></td>
+	  <td><img src="Champions\Maokai_0.jpg"></img></td>
+	  <td><img src="Champions\Nasus_11.jpg"></img></td>
+	  <td><img src="Champions\Ornn_1.jpg"></img></td>
+	  <td><img src="Champions\Renekton_0.jpg"></img></td>
+	  <td><img src="Champions\Taliyah_0.jpg"></img></td>
+	  <td><img src="Champions\Vayne_6.jpg"></img></td>	  
+	  <td><img src="Champions\Vladimir_8.jpg"></img></td>
+	  <td><img src="Champions\Warwick_4.jpg"></img></td>
+	  <td><img src="Champions\Zyra_1.jpg"></img></td>
+    </tr>
+	<tr>
+	  <th class="txt">Tier 2</th>
+	  <td><img src="Champions\Braum_0.jpg"></img></td>
+	  <td><img src="Champions\Jax_13.jpg"></img></td>
+	  <td><img src="Champions\Leblanc_5.jpg"></img></td>
+	  <td><img src="Champions\Malzahar_4.jpg"></img></td>
+	  <td><img src="Champions\Neeko_0.jpg"></img></td>
+	  <td><img src="Champions\RekSai_1.jpg"></img></td>
+	  <td><img src="Champions\Senna_0.jpg"></img></td>
+	  <td><img src="Champions\Skarner_0.jpg"></img></td>
+	  <td><img src="Champions\Syndra_2.jpg"></img></td>
+	  <td><img src="Champions\Thresh_1.jpg"></img></td>
+	  <td><img src="Champions\Varus_9.jpg"></img></td>	  
+	  <td><img src="Champions\Volibear_0.jpg"></img></td>
+	  <td><img src="Champions\Yasuo_0.jpg"></img></td>
+	</tr>
+	<tr>
+	  <th class="txt">Tier 3</th>
+	  <td><img src="Champions\Aatrox_1.jpg"></img></td>
+	  <td><img src="Champions\Azir_0.jpg"></img></td>
+	  <td><img src="Champions\DrMundo_1.jpg"></img></td>
+	  <td><img src="Champions\Ezreal_3.jpg"></img></td>
+	  <td><img src="Champions\Kindred_1.jpg"></img></td>
+	  <td><img src="Champions\Nautilus_0.jpg"></img></td>
+	  <td><img src="Champions\Nocturne_5.jpg"></img></td>
+	  <td><img src="Champions\Qiyana_0.jpg"></img></td>
+	  <td><img src="Champions\Sion_4.jpg"></img></td>
+	  <td><img src="Champions\Sivir_0.jpg"></img></td>
+	  <td><img src="Champions\Soraka_3.jpg"></img></td>
+	  <td><img src="Champions\Veigar_0.jpg"></img></td>
+	</tr>
+	<tr>
+	  <th class="txt">Tier 4</th>
+	  <td><img src="Champions\Annie_0.jpg"></img></td>
+	  <td><img src="Champions\Ashe_5.jpg"></img></td>
+	  <td><img src="Champions\Brand_0.jpg"></img></td>
+	  <td><img src="Champions\Janna_0.jpg"></img></td>
+	  <td><img src="Champions\Khazix_2.jpg"></img></td>
+	  <td><img src="Champions\Lucian_0.jpg"></img></td>
+	  <td><img src="Champions\Malphite_0.jpg"></img></td>
+	  <td><img src="Champions\Olaf_2.jpg"></img></td>
+	  <td><img src="Champions\Twitch_0.jpg"></img></td>
+	  <td><img src="Champions\Yorick_3.jpg"></img></td>
+	</tr>
+	<tr>
+	  <th class="txt">Tier 5</th>
+	  <td><img src="Champions\Amumu_17.jpg"></img></td>
+	  <td><img src="Champions\MasterYi_1.jpg"></img></td>
+	  <td><img src="Champions\Nami_7.jpg"></img></td>
+	  <td><img src="Champions\Singed_0.jpg"></img></td>
+	  <td><img src="Champions\Taric_0.jpg"></img></td>
+	  <td><img src="Champions\Zed_1.jpg"></img></td>
+	</tr>
+	<tr>
+	  <th class="txt">Tier 7</th>
+	  <td><img src="Champions\Lux_7.jpg"></img></td>
+	</tr>
+  </table>
+</body>
+</html>

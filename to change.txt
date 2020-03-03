@@ -3,7 +3,8 @@ x  zoom in images of multiple champions in one cell
 x  put tables next to each other on one page without scrolling
 x  api connection (files from communitydragon now)
 x  add missing icons through api (communitydragon)
-   add borders to champion icons with lvl indication
+x  add borders to champion icons with lvl indication
    add descriptions to items, traits
    add hover descriptions at champions and items
 x  update to 10.1
+   [bug] change thresh color to green
