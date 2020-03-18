@@ -4,7 +4,12 @@ x  put tables next to each other on one page without scrolling
 x  api connection (files from communitydragon now)
 x  add missing icons through api (communitydragon)
 x  add borders to champion icons with lvl indication
-   add descriptions to items, traits
-   add hover descriptions at champions and items
+x  add descriptions to items
+   add descriptions to traits
+   add hover descriptions at champions 
+x  and items
 x  update to 10.1
-   [bug] change thresh color to green
+x  [bug] change thresh color to green
+   add credits panel
+   class names are too long atm
+x  add all champions of new set
