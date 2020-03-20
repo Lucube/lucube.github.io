@@ -5,7 +5,7 @@ x  api connection (files from communitydragon now)
 x  add missing icons through api (communitydragon)
 x  add borders to champion icons with lvl indication
 x  add descriptions to items
-   add descriptions to traits
+x  add descriptions to traits
    add hover descriptions at champions 
 x  and items
 x  update to 10.1
@@ -13,3 +13,4 @@ x  [bug] change thresh color to green
    add credits panel
    class names are too long atm
 x  add all champions of new set
+x  wrong descriptions on some spatula combined items (ids at communitydragons are used twice)
