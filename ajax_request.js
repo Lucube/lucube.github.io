@@ -11,9 +11,9 @@ function init() {
 	else {
 		document.getElementById("outputtext").innerHTML = this.status;
 	}};
-	alert(window.location.href);
+	
 	xhttp.open("GET", endpoint1, true);
-	xhttp.setRequestHeader("Origin", window.location.href);
+	xhttp.setRequestHeader("Access-Control-Allow-Origin", "*");
 	xhttp.setRequestHeader("X-Riot-Token", apikey);
 	xhttp.send();
 }
