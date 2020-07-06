@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+	<head>
+		<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+		
+		<title>TFT - Match history</title>
+		
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				overflow: auto;
+			}
+			body {
+				background: rgb(29,29,31);
+				font-family: Arial;
+				color: white;
+			}
+			div {
+				display: block;
+			}
+			form {
+				margin: 12px;
+			}
+			#blankspace {
+				height: 80px;
+			}
+			#output {
+				height: 800px;
+				width: 90%;
+				margin: 0 0 50px 5%;
+				background: rgb(129,129,131);
+				border: 1px solid black;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<!--<form action="init()">
+			
+			<input type="submit" value="Submit">
+		</form>-->
+		<div>
+			<label for="sname">Summoner name: </label>
+			<input type="text" id="sname" name="Summoner name"><br>
+			<input type="radio" id="EUW1" name="region" value="EUW" checked>
+			<label for="EUW1">EUW</label><br>
+			<label for="apikey">Key: </label>
+			<input type="text" id="apikey" name="Key"><br><br>
+			<button onclick="init()">Submit</button>
+		</div>
+		
+		<div id="blankspace">
+		</div>
+		
+		<div>
+			<div id="output">
+			  <p id="outputtext"></p>
+			</div>
+		</div>
+		
+		<!-- JS -->
+		<script src="ajax_request.js"></script>
+	</body>
+</html>
