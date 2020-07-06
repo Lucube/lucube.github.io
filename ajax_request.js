@@ -13,7 +13,6 @@ function init() {
 	}};
 	
 	xhttp.open("GET", endpoint1, true);
-	xhttp.setRequestHeader("Access-Control-Allow-Origin", "*");
 	xhttp.setRequestHeader("X-Riot-Token", apikey);
 	xhttp.send();
 }
