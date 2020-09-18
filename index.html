@@ -994,7 +994,7 @@
 	    var i, index = getIndexById(text, itemId);
 
         // stupid bug fix -- ha! not anymore, rekt
-	    if (text.items[index].name == "assassin Plating") {
+	    if (text.items[index].name == "Duelist's Zeal") {
 	      if (asdf == 0) {
 	        return;
 	      }
@@ -1077,13 +1077,17 @@
 
 	    for (i = 0; i < len; i++) {
 	      if (rmStr.includes(jsontext.items[i].name)) {
-		    console.log(jsontext.items[i].name);
-	        jsontext.items.splice(i, 1);
+	        jsontext.items.splice(i--, 1);
 	        len--;
 	      }
 	    }
 
 	    jsontext.items.push(tmp);
+		
+		len = jsontext.items.length;
+		for (i = 0; i < len; i++) {
+		  console.log(jsontext.items[i].name);
+		}
 	    return jsontext;
 	  }
 

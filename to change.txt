@@ -18,4 +18,4 @@ x  wrong descriptions on some spatula combined items (ids at communitydragons ar
    display several tooltips at cells with multiple champions
    add actual numbers instead of @...@ in texts
    create multiple files (this one has over 1000 lines)
-   removeOldDuplicates() not working properly
+x  removeOldDuplicates() not working properly
