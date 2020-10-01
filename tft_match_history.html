@@ -9,7 +9,7 @@
 		<meta property="og:description" content="TFT Cheat Sheet by Lucube128">
 		<meta property="og:url" content="https://lucube.github.io/">
 		
-		<title>TFT - Match history</title
+		<title>TFT - Match history</title>
 		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		
@@ -48,10 +48,8 @@
 		<div>
 			<label for="sname">Summoner name: </label>
 			<input type="text" id="sname" name="Summoner name"><br>
-			<input type="radio" id="EUW1" name="region" value="EUW" checked>
-			<label for="EUW1">EUW</label><br>
-			<label for="apikey">Key: </label>
-			<input type="text" id="apikey" name="Key"><br><br>
+			<input type="radio" id="EUW1" name="region" value="euw1" checked>
+			<label for="EUW1">EUW</label><br><br>
 			<button onclick="init()">Submit</button>
 		</div>
 		
@@ -65,6 +63,42 @@
 		</div>
 		
 		<!-- JS -->
-		<script src="ajax_request.js"></script>
+		<script>
+		    var key = "";
+		
+		    function init() {
+			    if (key == "") {
+				    requestKey();
+				}
+				
+			    getSummonerBySummonerName();			
+			}
+			
+			function getSummonerBySummonerName() {
+			    $.ajax({
+				    url: buildUrl(),
+				}).done(function () {
+				    console.log("request completed");
+				}).fail(function () {
+				    console.log("request failed");
+				});
+			}
+			
+			function buildUrl() {
+			    var region;
+				
+				// get the region
+				if (document.getElementById("EUW1").checked) {
+				    region = document.getElementById("EUW1").value;
+				}				
+				
+			    return "https://" + region + ".api.riotgames.com/tft/summoner/v1/summoners/by-name/" + document.getElementById("sname").value + "?api_key=" + key;
+			}
+			
+			function requestKey() {
+			    key = prompt("Please enter a Riot Games API Key");
+				console.log(key);
+			}
+		</script>
 	</body>
 </html>
