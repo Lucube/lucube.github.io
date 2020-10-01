@@ -45,6 +45,10 @@
 	
 	<body>
 		<a href="index.html">< back</a>
+		<form action="https://euw1.api.riotgames.com/tft/summoner/v1/summoners/by-name/Tivorak" method="get">
+		  <input type="hidden" name="apikey" value="RGAPI-bcdb8510-caa5-4d15-975b-47b01241da60"></input>
+		  <input type="submit"></input>
+		</form>
 		<div>
 			<label for="sname">Summoner name: </label>
 			<input type="text" id="sname" name="Summoner name"><br>
@@ -77,6 +81,10 @@
 			function getSummonerBySummonerName() {
 			    $.ajax({
 				    url: buildUrl(),
+					/*xhrFields: {
+					    withCredentials: true,
+					},*/
+					contentType: "text/plain"
 				}).done(function () {
 				    console.log("request completed");
 				}).fail(function () {
