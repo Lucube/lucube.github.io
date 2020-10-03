@@ -75,37 +75,47 @@
 				    requestKey();
 				}
 				
-			    getSummonerBySummonerName();			
+			    getSummonerBySummonerName();
 			}
 			
 			function getSummonerBySummonerName() {
 			    $.ajax({
 				    url: buildUrl(),
-					/*xhrFields: {
-					    withCredentials: true,
-					},*/
-					contentType: "text/plain"
-				}).done(function () {
-				    console.log("request completed");
-				}).fail(function () {
-				    console.log("request failed");
+					method: "POST",
+					contentType: "application/x-www-form-urlencoded",
+					data: {
+					    url: getApiUrl()
+					}/*,
+					success: function(data) {
+					    console.log(data);
+					},
+					error: function(data) {
+					    console.log(data.statusText);
+					}*/
+				}).done(function (data) {
+				    console.log(data);
+				}).fail(function (data) {
+				    console.log(data);
 				});
 			}
 			
-			function buildUrl() {
+			function getApiUrl() {
 			    var region;
 				
 				// get the region
 				if (document.getElementById("EUW1").checked) {
 				    region = document.getElementById("EUW1").value;
-				}				
-				
+				}
+			
 			    return "https://" + region + ".api.riotgames.com/tft/summoner/v1/summoners/by-name/" + document.getElementById("sname").value + "?api_key=" + key;
+			}
+			
+			function buildUrl() {				
+			    return "http://localhost/backend_interface.php";
 			}
 			
 			function requestKey() {
 			    key = prompt("Please enter a Riot Games API Key");
-				console.log(key);
 			}
 		</script>
 	</body>
