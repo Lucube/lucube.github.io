@@ -1,5 +1,5 @@
 <!doctype html>
-<html prefix="og: http://ogp.me/ns#">
+<html prefix="og: http://ogp.me/ns#" lang="en">
 	<head>
 		<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 		<meta property="og:image" content="https://raw.communitydragon.org/latest/game/assets/ux/tft/stageicons/announce_icon_planning.png">
@@ -10,7 +10,7 @@
 		<meta property="og:url" content="https://lucube.github.io/">
 		
 		<title>TFT - Match history</title>
-		
+		<link rel="icon" href="https://raw.communitydragon.org/latest/game/assets/ux/tft/stageicons/announce_icon_planning.png"/>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		
 		<style>
@@ -21,7 +21,7 @@
 			}
 			body {
 				background: rgb(29,29,31);
-				font-family: Arial;
+				font-family: Arial,sans-serif;
 				color: white;
 			}
 			div {
@@ -30,31 +30,58 @@
 			form {
 				margin: 12px;
 			}
+			#back {
+				font-size: 24px;
+				color: #fff;
+				padding: 6px 12px;
+				margin: 12px 12px 0px;
+				border-radius: 20%;
+				background-color: rgb(63,63,65);
+				text-decoration: none;
+				display: inline-block;
+			}
+			#back:hover {
+				background-color: rgb(95,95,97);
+			}
+			#summonerForm {
+				margin: 6px 12px;
+			}
 			#blankspace {
 				height: 80px;
 			}
 			#output {
-				height: 800px;
+				min-height: 800px;
 				width: 90%;
 				margin: 0 0 50px 5%;
 				background: rgb(129,129,131);
 				border: 1px solid black;
+				overflow: hidden;
+				position: relative;
+			}
+			#outputheader {
+				height: 128px;
+				width: 100%;
+				background: rgb(95, 95, 97);
+				padding: 20px;
+			}
+			#outputbody {
+				height: 100%;
+				width: 100%;
+				padding: 20px;
+
+				display: flex;
+				flex-direction: column;
 			}
 		</style>
 	</head>
 	
 	<body>
-		<a href="index.html">< back</a>
-		<form action="https://euw1.api.riotgames.com/tft/summoner/v1/summoners/by-name/Tivorak" method="get">
-		  <input type="hidden" name="apikey" value="RGAPI-bcdb8510-caa5-4d15-975b-47b01241da60"></input>
-		  <input type="submit"></input>
-		</form>
-		<div>
+		<a href="index.html" id="back"><</a>
+		<div id="summonerForm">
 			<label for="sname">Summoner name: </label>
 			<input type="text" id="sname" name="Summoner name"><br>
 			<input type="radio" id="EUW1" name="region" value="euw1" checked>
-			<label for="EUW1">EUW</label><br><br>
-			<button onclick="init()">Submit</button>
+			<label for="EUW1">EUW</label>
 		</div>
 		
 		<div id="blankspace">
@@ -62,19 +89,35 @@
 		
 		<div>
 			<div id="output">
-			  <p id="outputtext"></p>
 			</div>
 		</div>
 		
 		<!-- JS -->
 		<script>
-		    var key = "";
+			// submit on enter
+			let input = document.getElementById("sname");
+			input.addEventListener("keyup", function(event) {
+				if (event.key === "Enter") {
+					event.preventDefault();
+					init();
+				}
+			});
+
+			// get Details
+		    let key = "", puuid = "";
+		    const numberOfMatches = 10;
 		
 		    function init() {
-			    if (key == "") {
-				    requestKey();
+		    	puuid = "";
+				let outputheader = document.getElementById("outputheader");
+				let outputbody = document.getElementById("outputbody");
+				if (outputheader !== null) {
+					outputheader.remove();
 				}
-				
+				if (outputbody !== null) {
+					outputbody.remove();
+				}
+
 			    getSummonerBySummonerName();
 			}
 			
@@ -84,30 +127,87 @@
 					method: "POST",
 					contentType: "application/x-www-form-urlencoded",
 					data: {
-					    url: getApiUrl()
-					}/*,
-					success: function(data) {
-					    console.log(data);
-					},
-					error: function(data) {
-					    console.log(data.statusText);
-					}*/
+					    url: getSummonerBySummonerApiUrl(),
+						token: getApiKey()
+					}
 				}).done(function (data) {
-				    console.log(data);
+				    buildOutputViewHeader(JSON.parse(data));
 				}).fail(function (data) {
 				    console.log(data);
 				});
 			}
+
+			function getMatchesBySummonerPUUID() {
+				$.ajax({
+					url: buildUrl(),
+					method: "POST",
+					contentType: "application/x-www-form-urlencoded",
+					data: {
+						url: getMatchesBySummonerApiUrl(),
+						token: getApiKey()
+					}
+				}).done(function (data) {
+					retrieveMatches(JSON.parse(data));
+				}).fail(function (data) {
+					console.log(data);
+				});
+			}
+
+			function getDetailsByMatch(match) {
+				$.ajax({
+					url: buildUrl(),
+					method: "POST",
+					contentType: "application/x-www-form-urlencoded",
+					data: {
+						url: getDetailsByMatchApiUrl(match),
+						token: getApiKey()
+					}
+				}).done(function (data) {
+					buildOutputViewBody(JSON.parse(data));
+				}).fail(function (data) {
+					console.log(data);
+				});
+			}
 			
-			function getApiUrl() {
-			    var region;
+			function getSummonerBySummonerApiUrl() {
+			    let region;
 				
 				// get the region
 				if (document.getElementById("EUW1").checked) {
 				    region = document.getElementById("EUW1").value;
 				}
 			
-			    return "https://" + region + ".api.riotgames.com/tft/summoner/v1/summoners/by-name/" + document.getElementById("sname").value + "?api_key=" + key;
+			    return "https://" + region + ".api.riotgames.com/tft/summoner/v1/summoners/by-name/" + document.getElementById("sname").value;
+			}
+
+			function getMatchesBySummonerApiUrl() {
+		    	let region;
+
+		    	// get the region
+				if (document.getElementById("EUW1").checked) {
+					region = "europe";
+				}
+
+				return "https://" + region + ".api.riotgames.com/tft/match/v1/matches/by-puuid/" + puuid + "/ids?count=" + numberOfMatches;
+			}
+
+			function getDetailsByMatchApiUrl(match) {
+		    	let region;
+
+		    	// get the region
+				if (document.getElementById("EUW1").checked) {
+					region = "europe";
+				}
+
+				return "https://" + region + ".api.riotgames.com/tft/match/v1/matches/" + match;
+			}
+			
+			function getApiKey() {
+			    if (key === "") {
+				    requestKey();
+				}
+				
+			    return key;
 			}
 			
 			function buildUrl() {				
@@ -115,7 +215,218 @@
 			}
 			
 			function requestKey() {
-			    key = prompt("Please enter a Riot Games API Key");
+				key = prompt("Please enter a Riot Games API Key");
+			}
+
+			// build output views
+			function buildOutputViewHeader(data) {
+		    	puuid = data.puuid;
+		    	addSummonerInfo(data);
+				getMatchesBySummonerPUUID();
+			}
+
+			function buildOutputViewBody(data) {
+
+
+				addMatchInfo(data);
+			}
+
+			function addSummonerInfo(data) {
+				let parentEle = document.getElementById("output");
+				let header = document.createElement("div");
+		    	let icon = document.createElement("img");
+		    	let crest = document.createElement("img");
+		    	let lvl = document.createElement("p");
+		    	let name = document.createElement("div");
+
+		    	header.id = "outputheader";
+
+		    	icon.style = "border-radius: 50%; transform: scale(0.85,0.85); padding-top: 4px;";
+		    	icon.src = "http://raw.communitydragon.org/latest/game/assets/ux/summonericons/profileicon" + data.profileIconId + ".png";
+
+				crest.style = "position: absolute; top: -44px; left: -44px;";
+				crest.src = getLvlCrest(data.summonerLevel);
+
+				if (data.summonerLevel < 10) {
+					lvl.style= "position: absolute; top: 140px; left: 80px; font-size: 15px; font-weight: bold";
+				}
+				else if (data.summonerLevel < 100) {
+					lvl.style= "position: absolute; top: 140px; left: 77px; font-size: 15px; font-weight: bold";
+				}
+				else if (data.summonerLevel < 1000) {
+					lvl.style= "position: absolute; top: 140px; left: 72px; font-size: 15px; font-weight: bold";
+				}
+				else {
+					lvl.style = "position: absolute; top: 140px; left: 68px; font-size: 15px; font-weight: bold";
+				}
+				lvl.innerHTML = data.summonerLevel;
+
+				name.style = "font-size: 36px; position: absolute; top: 20px; left: 180px;";
+				name.innerHTML = data.name;
+
+				header.appendChild(icon);
+		    	header.appendChild(crest);
+		    	header.appendChild(lvl);
+		    	header.appendChild(name);
+		    	parentEle.appendChild(header);
+			}
+
+			function getLvlCrest(level) {
+				if (level < 30) {
+					return "http://raw.communitydragon.org/latest/game/assets/loadouts/regalia/crests/prestige/prestige_crest_lvl_001.png";
+				}
+		    	else if (level < 50) {
+					return "http://raw.communitydragon.org/latest/game/assets/loadouts/regalia/crests/prestige/prestige_crest_lvl_030.png";
+				}
+		    	else if (level < 75) {
+		    		return "http://raw.communitydragon.org/latest/game/assets/loadouts/regalia/crests/prestige/prestige_crest_lvl_050.png";
+				}
+		    	else if (level < 100) {
+					return "http://raw.communitydragon.org/latest/game/assets/loadouts/regalia/crests/prestige/prestige_crest_lvl_075.png";
+				}
+		    	else if (level >= 500) {
+					return "http://raw.communitydragon.org/latest/game/assets/loadouts/regalia/crests/prestige/prestige_crest_lvl_500.png";
+				}
+		    	else {
+					return "http://raw.communitydragon.org/latest/game/assets/loadouts/regalia/crests/prestige/prestige_crest_lvl_" + (level - (level % 25)) + ".png";
+				}
+			}
+
+			function addMatchInfo(data) {
+		    	let participant = getParticipantNr(data.info.participants);
+
+				// build html elements
+				let body = document.getElementById("outputbody");
+				let column = document.createElement("div");
+				let rowOne = document.createElement("div");
+				let rowTwo = document.createElement("div");
+				// displayed elements
+				let companion = document.createElement("img");
+				let placement = document.createElement("div");
+				let gameType = document.createElement("div");
+				let date = document.createElement("div");
+				let gameLength = document.createElement("div");
+
+				column.id = "t" + data.info.game_datetime;
+				column.style = "border-bottom: solid 2px #ccc;";
+
+				rowOne.style = "padding: 34px 30px 26px 0px; position: relative; display: inline-block;";
+				rowTwo.style = "position: relative; display: inline-block; vertical-align: top; height: 100%; margin-left: 5px;";
+
+				companion.style = "object-fit: cover; height: 60px; width: 60px; object-position: 50% 50%; transform: scale(2.0, 2.0); margin-left: 35px; border-radius: 50%;";
+				companion.src = "http://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/" + getCompanionPath(data.info.participants[participant].companion.content_ID);
+
+				placement.style = "font-weight: bold; margin-left: 56px; position: absolute;";
+				if (data.info.participants[participant].placement === 1) {
+					placement.innerHTML = data.info.participants[participant].placement + "<sup>st</sup>";
+				}
+				else if (data.info.participants[participant].placement === 2) {
+					placement.innerHTML = data.info.participants[participant].placement + "<sup>nd</sup>";
+				}
+				else if (data.info.participants[participant].placement === 3) {
+					placement.innerHTML = data.info.participants[participant].placement + "<sup>rd</sup>";
+				}
+				else {
+					placement.innerHTML = data.info.participants[participant].placement + "<sup>th</sup>";
+				}
+
+				gameType.style = "font-weight: bold; line-height: 1.5;";
+				if (data.info.queue_id === 1100) {
+					gameType.innerHTML = "Ranked";
+				}
+				else {
+					gameType.innerHTML = "Normal";
+				}
+
+				let minutes = Math.floor(data.info.participants[participant].time_eliminated / 60);
+				let seconds = Math.floor(data.info.participants[participant].time_eliminated % 60);
+				gameLength.innerHTML = ("0" + minutes).slice(-2) + ":" + ("0" + seconds).slice(-2); //total game time: + " / " + ("0" + Math.floor(data.info.game_length / 60)).slice(-2) + ":" + ("0" + Math.floor(data.info.game_length % 60)).slice(-2);
+
+				let d = new Date(data.info.game_datetime);
+				date.innerHTML = "<br><br><br>" + ("0" + d.getDate()).slice(-2) + "/" + ("0" + (d.getMonth() + 1)).slice(-2) + "/" + d.getFullYear() + " " +
+							+ ("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2);
+
+				// add elements
+				rowOne.appendChild(companion);
+				rowOne.appendChild(placement);
+				rowTwo.appendChild(gameType);
+				rowTwo.appendChild(gameLength);
+				rowTwo.appendChild(date);
+
+				column.appendChild(rowOne);
+				column.appendChild(rowTwo);
+
+				// add matches chronological
+				if (body.children.length === 0) {
+					body.appendChild(column);
+				}
+				else {
+					for (let i = 0; i < body.children.length; i++) {
+						if (column.id > body.children[i].id) {
+							body.insertBefore(column, body.children[i]);
+							break;
+						}
+						if (i === (body.children.length -1)) {
+							body.appendChild(column);
+						}
+					}
+				}
+			}
+
+			function retrieveMatches(data) {
+		    	let len = data.length;
+				let parentEle = document.getElementById("output");
+				let body = document.createElement("div");
+
+				if (len === 0) {
+					body.innerHTML = "This Summmoner did not play any TFT Matches yet.";
+					body.style = "font-weight: bold";
+				}
+
+				body.id = "outputbody";
+				parentEle.appendChild(body);
+
+		    	for (let i = 0; i < len; i++) {
+					getDetailsByMatch(data[i]);
+				}
+			}
+
+			function getParticipantNr(data) {
+		    	for (let i = 0; i < 8; i++) {
+		    		if (data[i].puuid === puuid) {
+		    			return i;
+					}
+				}
+		    	return -1;
+			}
+
+			function getCompanionPath(id) {
+		    	let companions = null;
+				$.ajax({
+					url: "http://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/companions.json",
+					method: "GET",
+					async: false
+				}).done(function (data) {
+					companions = data;
+				}).fail(function (data) {
+					console.log(data);
+				});
+
+		    	for (let i = 0; i < companions.length; i++) {
+		    		if (companions[i].contentId === id) {
+		    			let pathstr = "";
+		    			let path = companions[i].loadoutsIcon.split("/");
+		    			path.shift();
+		    			path.shift();
+		    			path.shift();
+
+		    			for (let j = 0; j < path.length-1; j++) {
+		    				pathstr += path[j] + "/";
+						}
+		    			return (pathstr + path[path.length-1]).toLowerCase();
+					}
+				}
+		    	return "";
 			}
 		</script>
 	</body>

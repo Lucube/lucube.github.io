@@ -9,7 +9,9 @@
 	<meta property="og:description" content="TFT Cheat Sheet by Lucube128">
 	<meta property="og:url" content="https://lucube.github.io/">
 
-  <title>TFT Cheat Sheet</title>
+	<title>TFT Cheat Sheet</title>
+	<link rel="icon" href="https://raw.communitydragon.org/latest/game/assets/ux/tft/stageicons/announce_icon_planning.png"/>
+
 	<style>
     * {
 	  padding: 0px;
@@ -253,9 +255,6 @@
 	  color: white;
 	}
   </style>
-	<title>TFT Cheat Sheet</title>
-	<link rel="icon"
-	href="https://raw.communitydragon.org/latest/game/assets/ux/tft/stageicons/announce_icon_planning.png"/>
 </head>
 <body onload="init()">
   <!--<div id="credits">
@@ -912,12 +911,9 @@
 	    var rsp = "";
 	    var xhttp = new XMLHttpRequest();
 	    xhttp.onreadystatechange = function() {
-	      if (this.readyState == 4 && this.status == 200) {
+	      if (this.readyState === 4 && this.status === 200) {
 	        enrich(JSON.parse(this.responseText));
 	      }
-	      /*else {
-	        alert(this.readyState + " " + this.status);
-	      }*/
 	    };
 	    xhttp.open("GET", file, true);
 	    xhttp.send();
@@ -994,8 +990,8 @@
 	    var i, index = getIndexById(text, itemId);
 
         // stupid bug fix -- ha! not anymore, rekt
-	    if (text.items[index].name == "Duelist's Zeal") {
-	      if (asdf == 0) {
+	    if (text.items[index].name === "Duelist's Zeal") {
+	      if (asdf === 0) {
 	        return;
 	      }
 	      else {
@@ -1015,7 +1011,7 @@
       function getIndexByApiNameC(jsontext, apiName) {
         var i = 0, len = jsontext.sets[series].champions.length
         for (i = 0; i < len; i++) {
-          if (jsontext.sets[series].champions[i].apiName == apiName) {
+          if (jsontext.sets[series].champions[i].apiName === apiName) {
             return i;
           }
         }
@@ -1027,7 +1023,7 @@
       function getIndexByApiName(jsontext, apiName) {
         var i = 0, len = jsontext.sets[series].traits.length
         for (i = 0; i < len; i++) {
-          if (jsontext.sets[series].traits[i].apiName == apiName) {
+          if (jsontext.sets[series].traits[i].apiName === apiName) {
             return i;
           }
         }
@@ -1039,7 +1035,7 @@
       function getIndexById(jsontext, id) {
         var i = 0, len = jsontext.items.length;
         for (i = 0; i < len; i++) {
-          if (jsontext.items[i].id == id) {
+          if (jsontext.items[i].id === id) {
             return i;
           }
         }
@@ -1051,7 +1047,7 @@
 	  function getIndexByName(jsontext, str) {
 	    var i = 0, len = jsontext.items.length;
 	    for (i = 0; i < len; i++) {
-	      if (jsontext.items[i].name == str) {
+	      if (jsontext.items[i].name === str) {
 	        return i;
 	      }
 	    }
@@ -1068,7 +1064,7 @@
 
 		// for items that are used from previous tft-sets
 	    for (i = 0; i < len; i++) {
-	      if (jsontext.items[i].id == 89 && jsontext.items[i].name == rmStr[0]) {
+	      if (jsontext.items[i].id === 89 && jsontext.items[i].name === rmStr[0]) {
 	        tmp = jsontext.items[i];
 	      }
 	    }
