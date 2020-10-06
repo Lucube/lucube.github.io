@@ -1,5 +1,5 @@
 <!doctype html>
-<html prefix="og: http://ogp.me/ns#">
+<html prefix="og: http://ogp.me/ns#" lang="en">
 <head>
 	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 	<meta property="og:image" content="https://raw.communitydragon.org/latest/game/assets/ux/tft/stageicons/announce_icon_planning.png">
@@ -14,16 +14,21 @@
 
 	<style>
     * {
-	  padding: 0px;
-	  margin: 0px;
+	  padding: 0;
+	  margin: 0;
 	  text-align: center;
-	  font-family: Arial;
+	  font-family: Arial, sans-serif;
 	  color: white;
-	  font-size: 0px;
+	  font-size: 0;
 	  overflow: hidden;
 	}
 	body {
-	  background: rgb(29,29,31);
+		background: rgb(29,29,31);
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction: column;
+		height: 613px;
+		justify-content: space-between;
 	}
 	#credits {
 	  width: 600px;
@@ -35,9 +40,6 @@
 	  border: 2px yellow solid;
 	  border-radius: 25px;
 	}
-	table {
-	  display: inline-block;
-	}
 	table, th, td {
 	  border: 3px solid black;
 	  border-collapse: collapse;
@@ -45,12 +47,43 @@
 	th {
       font-size: 8px;
 	}
+	.itemtable {
+		align-self: flex-end;
+	}
+	.championtable {
+		align-self: flex-start;
+	}
+	#navbar {
+
+	}
 	.txt {
 	  font-size: 16px;
 	}
 	img {
 	  width: 36px;
 	  <!--border-radius: 20%;-->
+	}
+	#navbar ul {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+	}
+	.menuitem {
+		font-size: 15px;
+		font-weight: bold;
+		text-decoration: none;
+		color: #fff;
+		padding: 12px 12px;
+		margin: 6px;
+		border-radius: 20px;
+		background-color: rgb(63,63,65);
+		display: block;
+		overflow: hidden;
+		width: 120px;
+		float: right;
+	}
+	.menuitem:hover {
+		background-color: rgb(95,95,97);
 	}
 	.doublecell {
 	  width: 18px;
@@ -82,12 +115,6 @@
 	  object-position: 0 0;
 	  width: 24px;
 	  height: 24px;
-	}
-	#celestial {
-	  object-position: -120px 0px;
-	}
-	#chrono {
-	  object-position: -144px 0px;
 	}
 	#adept {
 	  object-position: -168px -192px;
@@ -257,9 +284,15 @@
   </style>
 </head>
 <body onload="init()">
-  <!--<div id="credits">
-	  TFT Cheat Sheet by Lucube128
-  </div>-->
+	<ul id="navbar">
+	  <li>
+		  <a href="tft_match_history.html" class="menuitem">Match History</a>
+	  </li>
+	</ul>
+<!--<div id="credits">
+    TFT Cheat Sheet by Lucube128
+</div>-->
+
   <table class="itemtable">
     <tr>
 	  <th><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_unknown.png"
@@ -402,7 +435,7 @@
 	</tr>
   </table>
   
-  <table><!--  names are too long, get an idea..
+  <table class="championtable"><!--  names are too long, get an idea..
     <tr>
 	  <th></th>
 	  <th>cultist</th>
@@ -816,9 +849,6 @@
 	  -->
 	</tr>
   </table>
-  
-  <br>
-  <a href="tft_match_history.html" style="font-size:12px">Match History</a> 
 <!--
   <table id="lvl">
 	<tr>
@@ -897,19 +927,12 @@
   -->
 
   <script>
-      var asdf = 1;
-	  var series = "4";
-
-      // test stuff
-      var stsr = findAtString("Prevents the wearer's first death, placing them in stasis instead. After @StasisDuration@ seconds, they return with @HealthRestore@ Health and shed all negative effects.");
-      for (i = 0; i < stsr.length; i++) {
-        alert(stsr[i]);
-      }
+      let asdf = 1;
+	  let series = "4";
 
 	  function init() {
-	    var file = "http://raw.communitydragon.org/latest/cdragon/tft/en_gb.json";
-	    var rsp = "";
-	    var xhttp = new XMLHttpRequest();
+	    let file = "http://raw.communitydragon.org/latest/cdragon/tft/en_gb.json";
+	    let xhttp = new XMLHttpRequest();
 	    xhttp.onreadystatechange = function() {
 	      if (this.readyState === 4 && this.status === 200) {
 	        enrich(JSON.parse(this.responseText));
@@ -927,15 +950,13 @@
 	    addItemDescriptions(text);
 	    addTraitDescriptions(text);
 	    addChampionDescriptions(text);
-
 	  }
 
 	  // put champion descriptions
 	  function addChampionDescriptions(text) {
-	    var itemApiName, i;
-	    var len = text.sets[series].champions.length;
+	    let itemApiName, len = text.sets[series].champions.length;
 
-	    for (i = 0; i < len; i++) {
+	    for (let i = 0; i < len; i++) {
 	      itemApiName = text.sets[series].champions[i].apiName;
 	      putChampionDescription(text, itemApiName);
 	    }
@@ -943,10 +964,9 @@
 
 	  // put trait descriptions
 	  function addTraitDescriptions(text) {
-	    var itemApiName, i;
-	    var len = text.sets[series].traits.length;
+	    let itemApiName, len = text.sets[series].traits.length;
 
-	    for (i = 0; i < len; i++) {
+	    for (let i = 0; i < len; i++) {
 	      itemApiName = text.sets[series].traits[i].apiName;
 	      putTraitDescription(text, itemApiName);
 	    }
@@ -954,10 +974,9 @@
 
 	  // put item descriptions
 	  function addItemDescriptions(text) {
-	    var itemId, i;
-	    var len = text.items.length;
+	    let itemId, len = text.items.length;
 
-	    for (i = 0; i < len; i++) {
+	    for (let i = 0; i < len; i++) {
 	      itemId = text.items[i].id;
 	      putItemDescription(text, itemId);
 	    }
@@ -965,31 +984,31 @@
 
 	  // add description text to champion
 	  function putChampionDescription(text, championApiName) {
-	    var i, index = getIndexByApiNameC(text, championApiName);
-	    var toolTip = "<p><b>" + text.sets[series].champions[index].name + "</b><br></p>";
-	    toolTip += "<p>" + text.sets[series].champions[index].ability.desc + "</p>";
+	    let index = getIndexByApiNameC(text, championApiName);
+	    let toolTip = "<p><b>" + text.sets[series].champions[index].name + "</b><br></p>" +
+				+ "<p>" + text.sets[series].champions[index].ability.desc + "</p>";
 
-	    for (i = 0; i < document.getElementsByClassName(championApiName).length; i++) {
+	    for (let i = 0; i < document.getElementsByClassName(championApiName).length; i++) {
 	      document.getElementsByClassName(championApiName)[i].innerHTML += toolTip;
 	    }
 	  }
 
       // add description text to trait
 	  function putTraitDescription(text, traitApiName) {
-	    var i, index = getIndexByApiName(text, traitApiName);
-	    var toolTip = "<p><b>" + text.sets[series].traits[index].name + "</b><br></p>";
-	    toolTip += "<p>" + text.sets[series].traits[index].desc + "</p>";
+	    let index = getIndexByApiName(text, traitApiName);
+	    let toolTip = "<p><b>" + text.sets[series].traits[index].name + "</b><br></p>" +
+				+ "<p>" + text.sets[series].traits[index].desc + "</p>";
 
-	    for (i = 0; i < document.getElementsByClassName(traitApiName).length; i++) {
+	    for (let i = 0; i < document.getElementsByClassName(traitApiName).length; i++) {
 	      document.getElementsByClassName(traitApiName)[i].innerHTML += toolTip;
 	    }
 	  }
 
 	  // add description text to item
 	  function putItemDescription(text, itemId) {
-	    var i, index = getIndexById(text, itemId);
+	    let index = getIndexById(text, itemId);
 
-        // stupid bug fix -- ha! not anymore, rekt
+        // stupid bug fix
 	    if (text.items[index].name === "Duelist's Zeal") {
 	      if (asdf === 0) {
 	        return;
@@ -999,18 +1018,18 @@
 	      }
 	    }
 
-	    var toolTip = "<p><b>" + text.items[index].name + "</b><br></p>";
-	    toolTip += "<p>" + text.items[index].desc + "</p>";
+	    let toolTip = "<p><b>" + text.items[index].name + "</b><br></p>" +
+				+ "<p>" + text.items[index].desc + "</p>";
 
-	    for (i = 0; i < document.getElementsByClassName(itemId).length; i++) {
+	    for (let i = 0; i < document.getElementsByClassName(itemId).length; i++) {
 	      document.getElementsByClassName(itemId)[i].innerHTML += toolTip;
 	    }
 	  }
 
 	  // get trait array index by apiName C
       function getIndexByApiNameC(jsontext, apiName) {
-        var i = 0, len = jsontext.sets[series].champions.length
-        for (i = 0; i < len; i++) {
+        let len = jsontext.sets[series].champions.length
+        for (let i = 0; i < len; i++) {
           if (jsontext.sets[series].champions[i].apiName === apiName) {
             return i;
           }
@@ -1021,8 +1040,8 @@
 
 	  // get trait array index by apiName
       function getIndexByApiName(jsontext, apiName) {
-        var i = 0, len = jsontext.sets[series].traits.length
-        for (i = 0; i < len; i++) {
+        let len = jsontext.sets[series].traits.length
+        for (let i = 0; i < len; i++) {
           if (jsontext.sets[series].traits[i].apiName === apiName) {
             return i;
           }
@@ -1033,8 +1052,8 @@
 
       // get item array index by Id
       function getIndexById(jsontext, id) {
-        var i = 0, len = jsontext.items.length;
-        for (i = 0; i < len; i++) {
+        let len = jsontext.items.length;
+        for (let i = 0; i < len; i++) {
           if (jsontext.items[i].id === id) {
             return i;
           }
@@ -1045,8 +1064,8 @@
 
       // get item array index
 	  function getIndexByName(jsontext, str) {
-	    var i = 0, len = jsontext.items.length;
-	    for (i = 0; i < len; i++) {
+	    let len = jsontext.items.length;
+	    for (let i = 0; i < len; i++) {
 	      if (jsontext.items[i].name === str) {
 	        return i;
 	      }
@@ -1057,21 +1076,17 @@
 
 	  // bugfix due to duplicate ids in json in items
 	  function removeOldDuplicates(jsontext) {
-	    var i, len = jsontext.items.length;
-	    var rmStr = ["Youmuu's Ghostblade", "Blade of the Ruined King", "Inferno's Cinder", "Mages Cap", "Warden's Mail", "Talisman of Light", "Frozen Mallet", "Berserker's Axe",
-					"Infiltrator's Talon", "Battlecast Plating", "Star Guardian's Charm", "Rebel Medal", "Celestial Orb", "Protector's Chestguard", "Dark Star's Heart"];
-	    var tmp;
+	    let len = jsontext.items.length, tmp;
+	    let rmStr = ["Youmuu's Ghostblade", "Blade of the Ruined King", "Inferno's Cinder", "Mages Cap", "Warden's Mail", "Talisman of Light", "Frozen Mallet", "Berserker's Axe",
+					"Infiltrator's Talon", "Battlecast Plating", "Star Guardian's Charm", "Rebel Medal", "Celestial Orb", "Protector's Chestguard", "Dark Star's Heart"];// for items that are used from previous tft-sets
 
-		// for items that are used from previous tft-sets
-	    for (i = 0; i < len; i++) {
+		for (let i = 0; i < len; i++) {
 	      if (jsontext.items[i].id === 89 && jsontext.items[i].name === rmStr[0]) {
 	        tmp = jsontext.items[i];
 	      }
 	    }
-		
-		console.log(len);
 
-	    for (i = 0; i < len; i++) {
+	    for (let i = 0; i < len; i++) {
 	      if (rmStr.includes(jsontext.items[i].name)) {
 	        jsontext.items.splice(i--, 1);
 	        len--;
@@ -1079,19 +1094,18 @@
 	    }
 
 	    jsontext.items.push(tmp);
-		
-		len = jsontext.items.length;
-		for (i = 0; i < len; i++) {
+
+	    /*len = jsontext.items.length;
+		for (let i = 0; i < len; i++) {
 		  console.log(jsontext.items[i].name);
-		}
+		}*/
 	    return jsontext;
 	  }
 
 	  function findAtString(text) {
-	    var strarrays = text.split("@");
-	    var rstr = "";
+	    let strarrays = text.split("@"), rstr = "";
 
-	    for (i = 1; i < strarrays.length; i = i+2) {
+	    for (let i = 1; i < strarrays.length; i = i+2) {
 	      rstr[(i-1)/2] = strarrays[i];
 	    }
 
