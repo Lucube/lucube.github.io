@@ -730,7 +730,9 @@
 	  <td></td>
 	  <td></td>
 	  <td></td>
-	  <td></td>
+	  <td><div class="champion-border"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size tier4"><img
+			  src="https://raw.communitydragon.org/latest/game/assets/characters/tft4_shen/hud/tft4_shen_square.tft_set4.png"/>
+	  </div><div class="details TFT4_Shen"></div></td>
 	  <td><div class="champion-border"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size tier3"><img
 			  src="https://raw.communitydragon.org/latest/game/assets/characters/tft4_yuumi/hud/tft4_yuumi_square.tft_set4.png"/>
 	  </div><div class="details TFT4_Yuumi"></div></td>
@@ -985,8 +987,8 @@
 	  // add description text to champion
 	  function putChampionDescription(text, championApiName) {
 	    let index = getIndexByApiNameC(text, championApiName);
-	    let toolTip = "<p><b>" + text.sets[series].champions[index].name + "</b><br></p>" +
-				+ "<p>" + text.sets[series].champions[index].ability.desc + "</p>";
+	    let toolTip = "<p><b>" + text.sets[series].champions[index].name + "</b></p><br>";
+		toolTip += "<p>" + text.sets[series].champions[index].ability.desc + "</p>";
 
 	    for (let i = 0; i < document.getElementsByClassName(championApiName).length; i++) {
 	      document.getElementsByClassName(championApiName)[i].innerHTML += toolTip;
@@ -996,8 +998,8 @@
       // add description text to trait
 	  function putTraitDescription(text, traitApiName) {
 	    let index = getIndexByApiName(text, traitApiName);
-	    let toolTip = "<p><b>" + text.sets[series].traits[index].name + "</b><br></p>" +
-				+ "<p>" + text.sets[series].traits[index].desc + "</p>";
+	    let toolTip = "<p><b>" + text.sets[series].traits[index].name + "</b></p><br>";
+		toolTip += "<p>" + text.sets[series].traits[index].desc + "</p>";
 
 	    for (let i = 0; i < document.getElementsByClassName(traitApiName).length; i++) {
 	      document.getElementsByClassName(traitApiName)[i].innerHTML += toolTip;
@@ -1018,8 +1020,8 @@
 	      }
 	    }
 
-	    let toolTip = "<p><b>" + text.items[index].name + "</b><br></p>" +
-				+ "<p>" + text.items[index].desc + "</p>";
+	    let toolTip = "<p><b>" + text.items[index].name + "</b></p><br>";
+		toolTip += "<p>" + text.items[index].desc + "</p>";
 
 	    for (let i = 0; i < document.getElementsByClassName(itemId).length; i++) {
 	      document.getElementsByClassName(itemId)[i].innerHTML += toolTip;
@@ -1028,7 +1030,7 @@
 
 	  // get trait array index by apiName C
       function getIndexByApiNameC(jsontext, apiName) {
-        let len = jsontext.sets[series].champions.length
+        let len = jsontext.sets[series].champions.length;
         for (let i = 0; i < len; i++) {
           if (jsontext.sets[series].champions[i].apiName === apiName) {
             return i;
@@ -1040,7 +1042,7 @@
 
 	  // get trait array index by apiName
       function getIndexByApiName(jsontext, apiName) {
-        let len = jsontext.sets[series].traits.length
+        let len = jsontext.sets[series].traits.length;
         for (let i = 0; i < len; i++) {
           if (jsontext.sets[series].traits[i].apiName === apiName) {
             return i;
