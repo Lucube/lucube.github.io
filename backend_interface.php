@@ -1,6 +1,6 @@
 <?php
   // Request Handling
-  header('Access-Control-Allow-Origin: https://lucube.github.io/');
+  header('Access-Control-Allow-Origin: https://lucube.github.io');
 
   // Pass url parameter as url
   $url = $_POST["url"];
