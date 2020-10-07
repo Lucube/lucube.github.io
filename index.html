@@ -968,6 +968,12 @@
 	  function addTraitDescriptions(text) {
 	    let itemApiName, len = text.sets[series].traits.length;
 
+	    // test replaceKeys(trait)
+		  replaceKeys(text.sets[series].traits[0]);
+		  replaceKeys(text.sets[series].traits[1]);
+		  replaceKeys(text.sets[series].traits[2]);
+		  replaceKeys(text.sets[series].traits[3]);
+
 	    for (let i = 0; i < len; i++) {
 	      itemApiName = text.sets[series].traits[i].apiName;
 	      putTraitDescription(text, itemApiName);
@@ -1102,6 +1108,57 @@
 		  console.log(jsontext.items[i].name);
 		}*/
 	    return jsontext;
+	  }
+
+	  /*
+	   * Finds placeholder <> and @@ strings and replaces them with their dynamic values.
+	   * @Para: Object of only a trait atm
+	   */
+	  function replaceKeys(trait) {
+	  	let effectLen = trait.effects.length;
+
+	  	// removes <br> elements at the end
+		let br = "<br>";
+		while (trait.desc.slice((-1) * br.length) === br) {
+			trait.desc = trait.desc.slice(0, trait.desc.length - br.length);
+		}
+
+	  	// expandRows
+		let expandStart = "<expandRow>", expandEnd = "</expandRow>";
+		let expandStartPos = trait.desc.search(expandStart), expandEndPos = trait.desc.search(expandEnd) + expandEnd.length;
+		let expandString = trait.desc.slice(expandStartPos, expandEndPos);
+	  	trait.desc += expandString.repeat(effectLen - 1);
+
+
+	  	/* replace @MinUnits@ with values
+	  	 * replace <expandRow> with ""
+	  	 * replace </expandRow> with <br>
+	  	 */
+	  	let minUnits = "@MinUnits@";
+	  	for (let i = 0; i < effectLen; i++) {
+			trait.desc = trait.desc.replace(minUnits, trait.effects[i].minUnits);
+			trait.desc = trait.desc.replace(expandStart, "");
+			trait.desc = trait.desc.replace(expandEnd, br);
+		}
+
+	  	// try replacing other keys
+	  	let x = 0, y = 0, str, replaceKey, keys = {}, keyArray;
+	  	while ((x = trait.desc.indexOf("@", y)) !== -1) {
+	  		y = trait.desc.indexOf("@", ++x) + 1;
+	  		replaceKey = trait.desc.slice(x, y - 1);
+	  		str = trait.desc.slice(x - 1, y);
+
+	  		if (keys[replaceKey] === undefined) {
+				keys[replaceKey] = 0;
+			}
+	  		else {
+				keys[replaceKey]++;
+			}
+
+	  		trait.desc = trait.desc.replace(str, trait.effects[keys[replaceKey]].variables[replaceKey]);
+		}
+
+	  	console.log(trait.name + br + trait.desc);
 	  }
 
 	  function findAtString(text) {

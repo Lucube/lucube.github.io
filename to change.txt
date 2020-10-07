@@ -19,3 +19,4 @@ x  wrong descriptions on some spatula combined items (ids at communitydragons ar
    add actual numbers instead of @...@ in texts
    create multiple files (this one has over 1000 lines)
 x  removeOldDuplicates() not working properly
+   build tables from json data
