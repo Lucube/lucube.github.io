@@ -1007,14 +1007,7 @@
             </div>
             <div class="details TFT4_Lux"></div>
         </td>
-        <td>
-            <div class="champion-border"><img
-                    src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png"
-                    class="champion-border-size tier4"><img
-                    src="https://raw.communitydragon.org/latest/game/assets/characters/tft4_cassiopeia/hud/tft4_cassiopeia_square.tft_set4.png"/>
-            </div>
-            <div class="details TFT4_Cassiopeia"></div>
-        </td>
+        <td></td>
         <td>
             <div class="champion-border"><img
                     src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png"
@@ -1660,6 +1653,7 @@
         let len = text.items.length;
 
         for (let i = 0; i < len; i++) {
+            descriptionItemCleanup(text.items[i]);
             putItemDescription(text, text.items[i].id);
         }
     }
@@ -1758,6 +1752,15 @@
     // bugfix due to duplicate ids in json in items
     function removeOldDuplicates(jsontext) {
         let len = jsontext.items.length, tmp;
+        // remove items via invalid ids
+        for (let i = 0; i < len; i++) {
+            if (jsontext.items[i].id < 0 || jsontext.items[i].id > 100) {
+                jsontext.items.splice(i--, 1);
+                len--;
+            }
+        }
+
+        // remove items via item name
         let rmStr = ["Youmuu's Ghostblade", "Blade of the Ruined King", "Inferno's Cinder", "Mages Cap", "Warden's Mail", "Talisman of Light", "Frozen Mallet", "Berserker's Axe",
             "Infiltrator's Talon", "Battlecast Plating", "Star Guardian's Charm", "Rebel Medal", "Celestial Orb", "Protector's Chestguard", "Dark Star's Heart"];// for items that are used from previous tft-sets
 
@@ -1775,12 +1778,86 @@
         }
 
         jsontext.items.push(tmp);
-
-        /*len = jsontext.items.length;
-        for (let i = 0; i < len; i++) {
-          console.log(jsontext.items[i].name);
-        }*/
         return jsontext;
+    }
+
+    function descriptionItemCleanup(item) {
+        for (let x = 0, y = 0; (x = item.desc.indexOf("@", x)) !== -1; ) {
+            y = item.desc.indexOf("@", ++x) + 1;
+
+            item.desc = replaceItemKeys(item, item.desc.slice(x, y - 1));
+        }
+    }
+
+    function replaceItemKeys(item, strKey) {
+        let mappedKey = strKey;
+        // key is not in text form but rather {ffffffff}
+        if (item.effects[strKey] === undefined) {
+            // switch key for value in desc
+            let keyValuePairs = {
+                BonusAP: "{d49caf5d}",
+                BonusCritDmgPerCritAbove100: "{45c7ed6b}",
+                ChanceOnHitToSilence: "{2275757b}",
+                CostIncrease: "{a861afa0}",
+                BanishDuration: "{510fdb6a}",
+                HexRange: "{9b1e8f37}",
+                MRShred: "{fe079f34}",
+                ManaRatio: "{df6f64b9}",
+                DamageReflect: "{6688a0d5}",
+                ArmorPerEnemy: "{7ba8c0e3}",
+                MRPerEnemy: "{7c694b41}",
+                "1StarAoEDamage": "{1ee760be}",
+                "2StarAoEDamage": "{6688a0d5}",
+                "3StarAoEDamage": "{156febb8}",
+                ICD: "{73e0fa13}",
+                FreezeDuration: "{aaa03dde}",
+                ChanceToSpellSteal: "{0cc88d45}",
+                DodgeChancePercent: "{0e4779e5}",
+                SmallBonusPct: "{deada01e}",
+                HealthThreshold: "{28b26e8a}",
+                LargeBonusPct: "{b8ae7546}",
+                AttackSpeedPercent: "{a8ca7859}",
+                BurnPercent: "{57706a69}",
+                BurnDuration: "{97e52ce8}",
+                GrievousWoundsPercent: "{2161bfa2}",
+                CritChancePerStack: "{cb57edb0}", // id: 93 and 94
+                TraitMultiplier: "{ae49cc70}",
+                ChanceOnHitToShrink: "{a56e0a21}",
+                StasisDuration: "{c425872e}",
+                ManaRestore: "{03494ad0}",
+                ADPerStack: "{f1d43b01}",
+                StartingStacks: "{ad68ce80}",
+                DamageIncreasePercent: "{d50b4559}",
+                StackCap: "{9396f00d}",
+                BonusResistsAtStackCap: "{b55019fa}",
+                MultiplierForDamage: "{276ba2c8}",
+                DodgeChance: "{c4b5579c}",
+                Lifesteal: "LifeSteal",
+                "1StarZombieHealth": "{37b0144c}",
+                "2StarZombieHealth": "{86646c65}",
+                "3StarZombieHealth": "{f6edd39e}",
+                FlatManaRestore: "{4b9a3b61}",
+                ExtraBounces: "{93d13af6}", // check value id:71
+                "1StarShieldValue": "{6fb9af6a}",
+                "2StarShieldValue": "{0d46330d}",
+                "3StarShieldValue": "{829e6cec}",
+                AttackRange: "{c270990a}",
+                ArmorReductionPercent: "{5079c7a2}",
+                ArmorBreakDuration: "{cc9fefa7}",
+                CritDamageAmp: "{353ede36}",
+                MaxArmySizeIncrease: "{ec9a04d1}",
+                SpellShieldDuration: "{a2b76524}",
+                TooltipDisplayHealth: "{452fd23c}",
+                "1StarBounces": "{440f813d}", // check values id:100
+                "2StarBounces": "{12a15e9e}", // check values id:100
+                "3StarBounces": "{79e2ec7b}", // check values id:100
+                OmniVamp: "{ad16f688}",
+                HPPerRound: "{1bb18b94}"
+            };
+            mappedKey = keyValuePairs[strKey];
+        }
+
+        return item.desc.replace("@" + strKey + "@", item.effects[mappedKey]);
     }
 
     /*
@@ -1911,19 +1988,27 @@
                     }
                 }
 
+                /* values that don't work: Talon: @TooltipBonusDamage@ %i:scaleAD%
+                 *                         Yasuo: @TooltipDamage@
+                 *                      Xin Zhao: @TooltipDamage@
+                 *                          Ashe: @ModifiedADDamage@
+                 *                          Jhin: @TooltipDamage@
+                 *                        Wukong: @TooltipDamage@
+                 *                         Garen: @ModifiedDamage@
+                 */
                 let keyFallback = [{
-                    Shield: "ShieldAmount",
-                    AS: "AttackSpeed",
-                    ADDamage: ["PercentADPerArrow", "NumArrows"],
-                    Damage: "WallDamage",
-                    CritDamage: "CritMultiplier",
-                    ExecuteThreshholdPercent: "ExecuteThreshholdPercent",
+                    ModifiedShield: "ShieldAmount",
+                    ModifiedAS: "AttackSpeed",
+                    ModifiedADDamage: ["PercentADPerArrow", "NumArrows"],
+                    ModifiedDamage: "WallDamage",
+                    ModifiedCritDamage: "CritMultiplier",
+                    ExecuteThreshholdPercent: "CritThreshold",
                     "MagicDamageReduction*100": "MagicDamageReduction",
-                    Percent: "PercentOfAD",
+                    ModifiedPercent: "PercentOfAD",
                     TooltipDamage: ["ADFromAttackSpeed", "PercentOfAD"],
                     "PercentPerHex*100": "PercentPerHex",
                     "DamageAmp*100": "DamageAmp",
-                    DR: "DamageReduction",
+                    ModifiedDR: "DamageReduction",
                     "PercentOfAD*100": "PercentOfAD",
                     TooltipBonusDamage: [""],
                     "DamageReduction*100": "DamageReduction",
@@ -1932,68 +2017,75 @@
                     "ArmorReduction*100": "ArmorReduction",
                     DamageCalc: "Damage",
                     "PercentRestored*100": "PercentRestored",
-                    Heal: "BaseHeal",
+                    ModifiedHeal: "BaseHeal",
                     "BaseDR*100": "BaseDR"
                 }, {
-                    Shield: "ShieldValue",
-                    Damage: "OrbDamage",
+                    ModifiedShield: "ShieldValue",
+                    ModifiedDamage: "OrbDamage",
                     TooltipDamage: [""],
                     "DamageAmp*100": "DamageAmp", // duplicate pair
-                    AS: "AttackSpeed" // duplicate pair
+                    ModifiedAS: "AttackSpeed" // duplicate pair
                 }, {
-                    Damage: ["ETotalTicks", "DamagePerTick"],
-                    Shield: "Shield Amount", // duplicate pair
+                    ModifiedDamage: ["ETotalTicks", "DamagePerTick"],
+                    ModifiedShield: "Shield Amount", // duplicate pair
                     TooltipDamage: [""],
-                    AS: "AttackSpeed" // duplicate pair
+                    ModifiedAS: "AttackSpeed" // duplicate pair
                 }, {
-                    Damage: "RocketDamage",
-                    Shield: "Shield Amount", // duplicate pair
+                    ModifiedDamage: "RocketDamage",
+                    ModifiedShield: "Shield Amount", // duplicate pair
                     TooltipDamage: [""],
-                    AS: "AttackSpeedPercent"
+                    ModifiedAS: "AttackSpeedPercent"
                 }, {
-                    Damage: "PercentHealthDamage"
+                    ModifiedDamage: "PercentHealthDamage"
                 }, {
-                    Damage: "BaseDamage"
+                    ModifiedDamage: "BaseDamage"
                 }, {
-                    Damage: "BaseDamage" // duplicate pair
+                    ModifiedDamage: "BaseDamage" // duplicate pair
                 }, {
-                    Damage: "TotalDamage"
+                    ModifiedDamage: "TotalDamage"
                 }, {
-                    Damage: "BaseDamage" // duplicate pair
+                    ModifiedDamage: "BaseDamage" // duplicate pair
                 }, {
-                    Damage: "BonusDamage"
+                    ModifiedDamage: "BonusDamage"
                 }, {
-                    Damage: "ADPercent"
+                    ModifiedDamage: "ADPercent"
                 }, {
-                    Damage: "TotalDamage" // duplicate pair
+                    ModifiedDamage: "TotalDamage" // duplicate pair
                 }, {
-                    Damage: "BaseDamage" // duplicate pair
+                    ModifiedDamage: "BaseDamage" // duplicate pair
                 }];
-                if (keyFallback[c].mappedStr !== undefined) {
-                    mappedStr = keyFallback[c].mappedStr;
+                if (keyFallback[c][keyStr] !== undefined) {
+                    mappedStr = keyFallback[c][keyStr];
                 }
             }
             if (pos === -1) {
-                //console.log(mappedStr + ": " + ability.name);
-                x = y;
                 continue;
             }
 
-            let valuesStr;
+            let valuesStr, value1 = Math.round(ability.variables[pos].value[1] * 100) / 100,
+                value2 = Math.round(ability.variables[pos].value[2] * 100) / 100,
+                value3 = Math.round(ability.variables[pos].value[3] * 100) / 100,
+                value4 = Math.round(ability.variables[pos].value[4] * 100) / 100;
+            if (keyStr.search("/*100") !== -1) {
+                value1 *= 100;
+                value2 *= 100;
+                value3 *= 100;
+                value4 *= 100;
+            }
             // only show one value if they are the same
-            if (ability.variables[pos].value[1] === ability.variables[pos].value[2] &&
-                ability.variables[pos].value[2] === ability.variables[pos].value[3]) {
-                valuesStr = ability.variables[pos].value[1];
+            if (value1 === value2 &&
+                value2 === value3) {
+                valuesStr = value1;
             }
             else {
-                valuesStr = ability.variables[pos].value[1] + "/" +
-                    ability.variables[pos].value[2] + "/" +
-                    ability.variables[pos].value[3];
+                valuesStr = value1 + "/" +
+                    value2 + "/" +
+                    value3;
             }
             // add fourth value for Moonlight champions
             if ((ability.name === "Pale Cascade" || ability.name === "Chain Lash" || ability.name === "1000 Daggers" || ability.name === "Sentry Turret")
-                && valuesStr !== ability.variables[pos].value[4]) {
-                valuesStr += "/" + ability.variables[pos].value[4];
+                && valuesStr !== value4) {
+                valuesStr += "/" + value4;
             }
 
             ability.desc = ability.desc.replace("@" + keyStr + "@", valuesStr);

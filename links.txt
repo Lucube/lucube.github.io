@@ -9,3 +9,9 @@ https://raw.communitydragon.org/latest/game/assets/ux/tft/championsplashes/
 
 tft json:
 https://raw.communitydragon.org/latest/cdragon/tft/en_us.json
+
+Summoner icon borders:
+http://raw.communitydragon.org/latest/game/assets/loadouts/regalia
+Summoner icons:
+http://raw.communitydragon.org/latest/game/assets/ux/summonericons/
+
