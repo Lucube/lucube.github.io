@@ -16,7 +16,8 @@ x  add all champions of new set
 x  wrong descriptions on some spatula combined items (ids at communitydragons are used twice)
    hover text on the right is out of screen
    display several tooltips at cells with multiple champions
-   add actual numbers instead of @...@ in texts
+x  add actual numbers instead of @...@ in texts
    create multiple files (this one has over 1000 lines)
 x  removeOldDuplicates() not working properly
    build tables from json data
+   clean up descriptions (some values are not displayed right)
