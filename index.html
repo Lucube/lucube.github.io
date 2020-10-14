@@ -1632,7 +1632,6 @@
         let len = text.sets[series].champions.length;
 
         for (let i = 0; i < len; i++) {
-            //console.log(text.sets[series].champions[i].name + " (" + i + "): " + text.sets[series].champions[i].ability.name);
             descriptionAbilityCleanup(text.sets[series].champions[i].ability);
             putChampionDescription(text, text.sets[series].champions[i].apiName);
         }
@@ -1852,7 +1851,8 @@
                 "2StarBounces": "{12a15e9e}", // check values id:100
                 "3StarBounces": "{79e2ec7b}", // check values id:100
                 OmniVamp: "{ad16f688}",
-                HPPerRound: "{1bb18b94}"
+                HPPerRound: "{1bb18b94}",
+                BonusDamageVsShieldOrCC: "{13206100}"
             };
             mappedKey = keyValuePairs[strKey];
         }
@@ -1866,6 +1866,11 @@
      */
     function descriptionTraitCleanup(trait) {
         let effectLen = trait.effects.length;
+
+        // Removes (@MinUnits@) at the beginning of Moonlight description
+        if (trait.name === "Moonlight") {
+            trait.desc = trait.desc.slice(13);
+        }
 
         // removes <br> elements at the end
         let br = "<br>";
@@ -1953,7 +1958,9 @@
                 PercentDamageReduction: "{bdd452e8}",
                 CultistHealthPercentTaken: "{a640a6f5}",
                 KeeperBonus: "{995b1992}",
-                ShieldAmount: "{40ee74ec}"
+                ShieldAmount: "{40ee74ec}",
+                NumberOfChampions: "{a6d1e24b}",
+                NumberOfAttacks: "{0140347e}"
             };
             mappedKey = keyValuePairs[strKey];
         }
