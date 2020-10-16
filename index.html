@@ -269,6 +269,16 @@
             text-align: left;
             color: white;
         }
+
+        @media all and (max-width: 1030px) {
+            body {
+                height: 1250px;
+                justify-content: flex-start;
+            }
+            #navbar, .itemtable, .championtable {
+                align-self: center;
+            }
+        }
     </style>
 </head>
 <body onload="init()">
@@ -663,8 +673,8 @@
         </td>
     </tr>
 </table>
-
-<table class="championtable"><!--  names are too long, get an idea..
+<!--
+<table class="championtable">!--  names are too long, get an idea..
     <tr>
 	  <th></th>
 	  <th>cultist</th>
@@ -680,7 +690,7 @@
 	  <th>boss</th>
 	  <th>tormented</th>
 	  <th>Vanguard</th>
-	</tr>-->
+	</tr>--
     <tr>
         <th class="tableheader"></th>
         <th><div><img id="Cultist"/>
@@ -1078,7 +1088,7 @@
         </td>
         <td></td>
         <td></td>
-        <!-- thirdcell template
+        !-- thirdcell template
         <td><div class="champion-border-third"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size-third tier1"><div class="thirdcell">
             <img src="https://raw.communitydragon.org/latest/game/assets/characters/tft3_zoe/hud/tft3_zoe_square.tft_set3.png"
                  class="thirdcellimg"/></div>
@@ -1089,14 +1099,16 @@
             <img src="https://raw.communitydragon.org/latest/game/assets/characters/tft3_syndra/hud/tft3_syndra_square.tft_set3.png"
                  class="thirdcellimg"/></div>
         </div><div class="details TFT3_Syndra"></div></td>
-        -->
+        --
     </tr>
 </table>
-
+-->
 <script>
     let asdf = 1;
     const series = "4";
     const baseURL = "http://raw.communitydragon.org/latest/game/";
+    const traitsArray = [["Cultist", "Divine", "Dusk", "Enlightened", "Elderwood", "Exile", "Fortune", "Moonlight", "Ninja", "Spirit", "Warlord", "The Boss", "Tormented"], // [0]: Origins
+        ["Adept", "Assassin", "Brawler", "Dazzler", "Duelist", "Hunter", "Keeper", "Mage", "Mystic", "Shade", "Sharpshooter", "Vanguard", "Emperor"]]; // [1]: Classes
 
     function init() {
         let file = "http://raw.communitydragon.org/latest/cdragon/tft/en_gb.json";
@@ -1115,11 +1127,111 @@
     function enrich(text) {
         text = removeOldDuplicates(text);
 
+        buildChampionTable(text.sets[series].traits);
+        addChampionPositions(text.sets[series].champions);
+
         addChampionIcons(text);
         addTraitIcons(text);
         addItemDescriptions(text);
         addTraitDescriptions(text);
         addChampionDescriptions(text);
+    }
+
+    // build table structure according to current Origins and Classes
+    function buildChampionTable(traits) {
+        let championTable = document.createElement("table");
+        let championTBody = document.createElement("tbody");
+        let championTR = document.createElement("tr");
+        let traitTH = document.createElement("th");
+        let championCorner = document.createElement("th");
+        let championTD = document.createElement("td");
+        let traitDiv = document.createElement("div");
+        let traitImg = document.createElement("img");
+        championCorner.classList.add("tableheader");
+        championTable.classList.add("championtable");
+
+        championTR.appendChild(championCorner);
+        championTBody.appendChild(championTR);
+
+        traitDiv.appendChild(traitImg);
+        traitTH.appendChild(traitDiv);
+        for (let i = 0; i < traitsArray[0].length; i++) {
+            let th = traitTH.cloneNode(true);
+            th.firstChild.id = getApiNameByName(traits, traitsArray[0][i]);
+            championTR.appendChild(th);
+        }
+        for (let i = 0; i < traitsArray[1].length; i++) {
+            let tr = championTR.cloneNode(false);
+            let th = traitTH.cloneNode(true);
+            th.firstChild.id = getApiNameByName(traits, traitsArray[1][i]);
+            tr.appendChild(th);
+
+            for (let j = 0; j < traitsArray[0].length; j++) {
+                let td = championTD.cloneNode(true);
+                tr.appendChild(td);
+            }
+            championTBody.appendChild(tr);
+        }
+
+        championTable.appendChild(championTBody);
+        document.body.appendChild(championTable);
+    }
+
+    // defines positions of champions in championtable
+    function addChampionPositions(champions) {
+        let championTable = document.getElementsByClassName("championtable")[0];
+        let championDiv = document.createElement("div");
+
+        for (let i = 0; i < champions.length; i++) {
+            let championBorder = "champion-border";
+            let cDiv = championDiv.cloneNode(true);
+            let len = champions[i].traits.length, container = [], tPos = [];
+            cDiv.classList.add(champions[i].apiName);
+
+
+            // get cell position for champion
+            if (len === 2) {
+                for (let j = 0; j < len; j++) {
+                    tPos[j] = traitsArray[j].indexOf(champions[i].traits[j]);
+                }
+                container[0] = championTable.firstChild.childNodes[tPos[1] + 1].childNodes[tPos[0] + 1];
+            }
+            else if (len === 3) {
+                tPos[0] = traitsArray[0].indexOf(champions[i].traits[0]);
+                tPos[1] = 0;
+                tPos[2] = traitsArray[1].indexOf(champions[i].traits[2]);
+
+                if (traitsArray[0].indexOf(champions[i].traits[1]) !== -1) {
+                    tPos[1] = traitsArray[0].indexOf(champions[i].traits[1]);
+                    container[0] = championTable.firstChild.childNodes[tPos[2] + 1].childNodes[tPos[0] + 1];
+                    container[1] = championTable.firstChild.childNodes[tPos[2] + 1].childNodes[tPos[1] + 1];
+                }
+                else if (traitsArray[1].indexOf((champions[i].traits[1])) !== -1) {
+                    tPos[1] = traitsArray[1].indexOf(champions[i].traits[1]);
+                    container[0] = championTable.firstChild.childNodes[tPos[1] + 1].childNodes[tPos[0] + 1];
+                    container[1] = championTable.firstChild.childNodes[tPos[2] + 1].childNodes[tPos[0] + 1];
+                }
+            }
+
+            for (let j = 0; j < container.length; j++) {
+                // for cells with multiple champions
+                if (container[j].childNodes.length === 1) {
+                    championBorder += "-half";
+                } else if (container[j].childNodes.length === 2) {
+                    championBorder += "-third";
+                }
+                for (let k = 0; k < container[j].childNodes.length; k++) {
+                    container[j].childNodes[k].classList.remove("champion-border");
+                    container[j].childNodes[k].classList.remove("champion-border" + "-half");
+                    container[j].childNodes[k].classList.add(championBorder);
+                }
+
+
+                let cPos = cDiv.cloneNode(true);
+                cPos.classList.add(championBorder);
+                container[j].appendChild(cPos);
+            }
+        }
     }
 
     // add cost borders on champions
@@ -1183,7 +1295,7 @@
             let bI = borderImg.cloneNode(true);
             let cBC = document.createElement("div");
             let pEle = document.getElementsByClassName(text.apiName)[i];
-            let parting = pEle.classList[0].slice(championBorder.length);
+            let parting = pEle.classList[1].slice(championBorder.length);
             cBC.classList.add(championBorder + "-container" + parting);
             bI.classList.add(championBorder + "-size" + parting);
 
@@ -1211,8 +1323,8 @@
             let pEle = document.getElementsByClassName(text.apiName)[i];
 
             // for double/triple-cells
-            if (pEle.classList[0].slice(championBorder.length) !== "") {
-                let parting = pEle.classList[0].slice(championBorder.length + 1);
+            if (pEle.classList[1].slice(championBorder.length) !== "") {
+                let parting = pEle.classList[1].slice(championBorder.length + 1);
                 let multDiv = document.createElement("div");
                 multDiv.classList.add(parting + "cell");
                 cI.classList.add(parting + "cellimg");
@@ -1236,8 +1348,8 @@
 
     // replace trait icons
     function putTraitIcon(text) {
-        document.getElementById(text.apiName).src = baseURL + (text.icon.slice(0, -3).toLowerCase()) + "png";
-        document.getElementById(text.apiName).alt = text.name;
+        document.getElementById(text.apiName).firstChild.src = baseURL + (text.icon.slice(0, -3).toLowerCase()) + "png";
+        document.getElementById(text.apiName).firstChild.alt = text.name;
     }
 
     // add description text to champion
@@ -1260,10 +1372,11 @@
         let index = getIndexByApiName(text, traitApiName);
         let toolTip = "<p><b>" + text.sets[series].traits[index].name + "</b></p><br>";
         toolTip += "<p>" + text.sets[series].traits[index].desc + "</p>";
+        let traitDesc = document.createElement("div");
+        traitDesc.classList.add("details");
+        traitDesc.innerHTML = toolTip;
 
-        for (let i = 0; i < document.getElementsByClassName(traitApiName).length; i++) {
-            document.getElementsByClassName(traitApiName)[i].innerHTML += toolTip;
-        }
+        document.getElementById(traitApiName).appendChild(traitDesc);
     }
 
     // add description text to item
@@ -1321,6 +1434,16 @@
         }
 
         return -1;
+    }
+
+    // get apiName by trait name
+    function getApiNameByName (traits, name) {
+        for (let i = 0; i < traits.length; i++) {
+            if (traits[i].name === name) {
+                return traits[i].apiName;
+            }
+        }
+        return "";
     }
 
     // get item array index
