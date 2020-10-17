@@ -22,7 +22,6 @@
             font-family: Arial, sans-serif;
             font-size: 0;
             color: white;
-            overflow: hidden;
         }
 
         body {
@@ -54,12 +53,18 @@
             font-size: 8px;
         }
 
+        #navbar {
+            visibility: hidden;
+        }
+
         .itemtable {
             align-self: flex-end;
+            visibility: hidden;
         }
 
         .championtable {
             align-self: flex-start;
+            visibility: hidden;
         }
 
         .txt {
@@ -121,12 +126,17 @@
             margin: 0 -9px;
         }
 
-        .tableheader {
+        .itemtable tr th img {
             width: 48px;
         }
 
         .championtable tr th img {
             width: 32px;
+        }
+
+        .championtable tr:nth-child(1) th:nth-child(1) {
+            width: 48px;
+            height: 42px;
         }
 
         #lvl {
@@ -161,18 +171,21 @@
             position: absolute;
             width: 36px;
             height: 42px;
+            overflow: hidden;
         }
 
         .champion-border-container-half {
             position: absolute;
             width: 18px;
             height: 42px;
+            overflow: hidden;
         }
 
         .champion-border-container-third {
             position: absolute;
             width: 12px;
             height: 42px;
+            overflow: hidden;
         }
 
         .champion-border-size {
@@ -270,6 +283,22 @@
             color: white;
         }
 
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgb(29,29,31);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgb(61,61,63);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgb(93,93,95);
+        }
+
         @media all and (max-width: 1030px) {
             body {
                 height: 1250px;
@@ -290,805 +319,7 @@
 <!--<div id="credits">
     TFT Cheat Sheet by Lucube128
 </div>-->
-
-<table class="itemtable">
-    <tr>
-        <th><div><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_unknown.png"
-                 class="tableheader"/>
-            <div class="details 0"></div></div>
-        </th>
-        <td><div><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/icon_bfsword.png"
-                 class="tableheader"/>
-            <div class="details 1"></div></div>
-        </td>
-        <td><div><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_recurvebow.png"
-                 class="tableheader"/>
-            <div class="details 2"></div></div>
-        </td>
-        <td><div><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/icon_needlesslylargerod.png"
-                 class="tableheader"/>
-            <div class="details 3"></div></div>
-        </td>
-        <td><div><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/icon_tearofthegoddess.png"
-                 class="tableheader"/>
-            <div class="details 4"></div></div>
-        </td>
-        <td><div><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/icon_giantsbelt.png"
-                 class="tableheader"/>
-            <div class="details 7"></div></div>
-        </td>
-        <td><div><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_chainvest.png"
-                 class="tableheader"/>
-            <div class="details 5"></div></div>
-        </td>
-        <td><div><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_negatroncloak.png"
-                 class="tableheader"/>
-            <div class="details 6"></div></div>
-        </td>
-        <td><div><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_sparringgloves.png"
-                 class="tableheader"/>
-            <div class="details 9"></div></div>
-        </td>
-        <td><div><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_spatula.png"
-                 class="tableheader"/>
-            <div class="details 8"></div></div>
-        </td>
-    </tr>
-    <tr>
-        <th><div><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/icon_bfsword.png"
-                 class="tableheader"/>
-            <div class="details 1"></div></div>
-        </th>
-        <td><div><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_deathblade.png"/>
-            <div class="details 11"></div></div>
-        </td>
-        <td><div><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_giantslayer.png"/>
-            <div class="details 12"></div></div>
-        </td>
-        <td><div><img
-                src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_hextechgunblade.png"/>
-            <div class="details 13"></div></div>
-        </td>
-        <td><div><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_spearofshojin.png"/>
-            <div class="details 14"></div></div>
-        </td>
-        <td><div><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_zekesherald.png"/>
-            <div class="details 17"></div></div>
-        </td>
-        <td><div><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_guardianangel.png"/>
-            <div class="details 15"></div></div>
-        </td>
-        <td><div><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_bloodthirster.png"/>
-            <div class="details 16"></div></div>
-        </td>
-        <td><div><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_infinityedge.png"/>
-            <div class="details 19"></div></div>
-        </td>
-        <td><div><img
-                src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_set4divine.tft_set4.png"/>
-            <div class="details 18"></div></div>
-        </td>
-    </tr>
-    <tr>
-        <th><div><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_recurvebow.png"
-                 class="tableheader"/>
-            <div class="details 2"></div></div>
-        </th>
-        <td><div><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_giantslayer.png"/>
-            <div class="details 12"></div></div>
-        </td>
-        <td><div><img
-                src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_rapidfirecannon.png"/>
-            <div class="details 22"></div></div>
-        </td>
-        <td><div><img
-                src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_guinsoosrageblade.png"/>
-            <div class="details 23"></div></div>
-        </td>
-        <td><div><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_statikkshiv.png"/>
-            <div class="details 24"></div></div>
-        </td>
-        <td><div><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_zzrot_portal.png"/>
-            <div class="details 27"></div></div>
-        </td>
-        <td><div><img
-                src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_titansresolve.tft_1001_itemsupdate.png"/>
-            <div class="details 25"></div></div>
-        </td>
-        <td><div><img
-                src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_runaanshurricane.png"/>
-            <div class="details 26"></div></div>
-        </td>
-        <td><div><img
-                src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_mortalreminder.png"/>
-            <div class="details 29"></div></div>
-        </td>
-        <td><div><img
-                src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_set4duelist.tft_set4.png"/>
-            <div class="details 28"></div></div>
-        </td>
-    </tr>
-    <tr>
-        <th><div><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/icon_needlesslylargerod.png"
-                 class="tableheader"/>
-            <div class="details 3"></div></div>
-        </th>
-        <td><div><img
-                src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_hextechgunblade.png"/>
-            <div class="details 13"></div></div>
-        </td>
-        <td><div><img
-                src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_guinsoosrageblade.png"/>
-            <div class="details 23"></div></div>
-        </td>
-        <td><div><img
-                src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_rabadonsdeathcap.png"/>
-            <div class="details 33"></div></div>
-        </td>
-        <td><div><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_ludensecho.png"/>
-            <div class="details 34"></div></div>
-        </td>
-        <td><div><img
-                src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_morellonomicon.png"/>
-            <div class="details 37"></div></div>
-        </td>
-        <td><div><img
-                src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_locketoftheironsolari.png"/>
-            <div class="details 35"></div></div>
-        </td>
-        <td><div><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_ionicspark.png"/>
-            <div class="details 36"></div></div>
-        </td>
-        <td><div><img
-                src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_jeweled_gauntlet.png"/>
-            <div class="details 39"></div></div>
-        </td>
-        <td><div><img
-                src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_set4dusk.tft_set4.png"/>
-            <div class="details 38"></div></div>
-        </td>
-    </tr>
-    <tr>
-        <th><div><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/icon_tearofthegoddess.png"
-                 class="tableheader"/>
-            <div class="details 4"></div></div>
-        </th>
-        <td><div><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_spearofshojin.png"/>
-            <div class="details 14"></div></div>
-        </td>
-        <td><div><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_statikkshiv.png"/>
-            <div class="details 24"></div></div>
-        </td>
-        <td><div><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_ludensecho.png"/>
-            <div class="details 34"></div></div>
-        </td>
-        <td><div><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_bluebuff.png"/>
-            <div class="details 44"></div></div>
-        </td>
-        <td><div><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_redemption.png"/>
-            <div class="details 47"></div></div>
-        </td>
-        <td><div><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_frozenheart.png"/>
-            <div class="details 45"></div></div>
-        </td>
-        <td><div><img
-                src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_chaliceofpower.png"/>
-            <div class="details 46"></div></div>
-        </td>
-        <td><div><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_handofjustice.png"/>
-            <div class="details 49"></div></div>
-        </td>
-        <td><div><img
-                src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_set4magecap.tft_set4.png"/>
-            <div class="details 48"></div></div>
-        </td>
-    </tr>
-    <tr>
-        <th><div><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/icon_giantsbelt.png"
-                 class="tableheader"/>
-            <div class="details 7"></div></div>
-        </th>
-        <td><div><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_zekesherald.png"/>
-            <div class="details 17"></div></div>
-        </td>
-        <td><div><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_zzrot_portal.png"/>
-            <div class="details 27"></div></div>
-        </td>
-        <td><div><img
-                src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_morellonomicon.png"/>
-            <div class="details 37"></div></div>
-        </td>
-        <td><div><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_redemption.png"/>
-            <div class="details 47"></div></div>
-        </td>
-        <td><div><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_warmogsarmor.png"/>
-            <div class="details 77"></div></div>
-        </td>
-        <td><div><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_sunfirecape.png"/>
-            <div class="details 57"></div></div>
-        </td>
-        <td><div><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_zephyr.png"/>
-            <div class="details 67"></div></div>
-        </td>
-        <td><div><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_backhand.png"/>
-            <div class="details 79"></div></div>
-        </td>
-        <td><div><img
-                src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_set4warlord.tft_set4.png"/>
-            <div class="details 78"></div></div>
-        </td>
-    </tr>
-    <tr>
-        <th><div><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_chainvest.png"
-                 class="tableheader"/>
-            <div class="details 5"></div></div>
-        </th>
-        <td><div><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_guardianangel.png"/>
-            <div class="details 15"></div></div>
-        </td>
-        <td><div><img
-                src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_titansresolve.tft_1001_itemsupdate.png"/>
-            <div class="details 25"></div></div>
-        </td>
-        <td><div><img
-                src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_locketoftheironsolari.png"/>
-            <div class="details 35"></div></div>
-        </td>
-        <td><div><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_frozenheart.png"/>
-            <div class="details 45"></div></div>
-        </td>
-        <td><div><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_sunfirecape.png"/>
-            <div class="details 57"></div></div>
-        </td>
-        <td><div><img
-                src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_bramblevest.tft_1001_itemsupdate.png"/>
-            <div class="details 55"></div></div>
-        </td>
-        <td><div><img
-                src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_gargoylestoneplate.png"/>
-            <div class="details 56"></div></div>
-        </td>
-        <td><div><img
-                src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_shroud.tft_set3.png"/>
-            <div class="details 59"></div></div>
-        </td>
-        <td><div><img
-                src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_set4vanguard.tft_set4.png"/>
-            <div class="details 58"></div></div>
-        </td>
-    </tr>
-    <tr>
-        <th><div><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_negatroncloak.png"
-                 class="tableheader"/>
-            <div class="details 6"></div></div>
-        </th>
-        <td><div><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_bloodthirster.png"/>
-            <div class="details 16"></div></div>
-        </td>
-        <td><div><img
-                src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_runaanshurricane.png"/>
-            <div class="details 26"></div></div>
-        </td>
-        <td><div><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_ionicspark.png"/>
-            <div class="details 36"></div></div>
-        </td>
-        <td><div><img
-                src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_chaliceofpower.png"/>
-            <div class="details 46"></div></div>
-        </td>
-        <td><div><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_zephyr.png"/>
-            <div class="details 67"></div></div>
-        </td>
-        <td><div><img
-                src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_gargoylestoneplate.png"/>
-            <div class="details 56"></div></div>
-        </td>
-        <td><div><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_dragonsclaw.png"/>
-            <div class="details 66"></div></div>
-        </td>
-        <td><div><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_mercurial.png"/>
-            <div class="details 69"></div></div>
-        </td>
-        <td><div><img
-                src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_set4elderwood.tft_set4.png"/>
-            <div class="details 68"></div></div>
-        </td>
-    </tr>
-    <tr>
-        <th><div><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_sparringgloves.png"
-                 class="tableheader"/>
-            <div class="details 9"></div></div>
-        </th>
-        <td><div><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_infinityedge.png"/>
-            <div class="details 19"></div></div>
-        </td>
-        <td><div><img
-                src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_mortalreminder.png"/>
-            <div class="details 29"></div></div>
-        </td>
-        <td><div><img
-                src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_jeweled_gauntlet.png"/>
-            <div class="details 39"></div></div>
-        </td>
-        <td><div><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_handofjustice.png"/>
-            <div class="details 49"></div></div>
-        </td>
-        <td><div><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_backhand.png"/>
-            <div class="details 79"></div></div>
-        </td>
-        <td><div><img
-                src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_shroud.tft_set3.png"/>
-            <div class="details 59"></div></div>
-        </td>
-        <td><div><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_mercurial.png"/>
-            <div class="details 69"></div></div>
-        </td>
-        <td><div><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_thiefsgloves.png"/>
-            <div class="details 99"></div></div>
-        </td>
-        <td><div><img
-                src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_youmuusghostblade.png"/>
-            <div class="details 89"></div></div>
-        </td>
-    </tr>
-    <tr>
-        <th><div><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_spatula.png"
-                 class="tableheader"/>
-            <div class="details 8"></div></div>
-        </th>
-        <td><div><img
-                src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_set4divine.tft_set4.png"/>
-            <div class="details 18"></div></div>
-        </td>
-        <td><div><img
-                src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_set4duelist.tft_set4.png"/>
-            <div class="details 28"></div></div>
-        </td>
-        <td><div><img
-                src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_set4dusk.tft_set4.png"/>
-            <div class="details 38"></div></div>
-        </td>
-        <td><div><img
-                src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_set4magecap.tft_set4.png"/>
-            <div class="details 48"></div></div>
-        </td>
-        <td><div><img
-                src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_set4warlord.tft_set4.png"/>
-            <div class="details 78"></div></div>
-        </td>
-        <td><div><img
-                src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_set4vanguard.tft_set4.png"/>
-            <div class="details 58"></div></div>
-        </td>
-        <td><div><img
-                src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_set4elderwood.tft_set4.png"/>
-            <div class="details 68"></div></div>
-        </td>
-        <td><div><img
-                src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_youmuusghostblade.png"/>
-            <div class="details 89"></div></div>
-        </td>
-        <td><div><img src="http://raw.communitydragon.org/latest/game/assets/maps/particles/tft/tft_item_forceofnature.png"/>
-            <div class="details 88"></div></div>
-        </td>
-    </tr>
-</table>
-<!--
-<table class="championtable">!--  names are too long, get an idea..
-    <tr>
-	  <th></th>
-	  <th>cultist</th>
-	  <th>divine</th>
-	  <th>dusk</th>
-	  <th>enlightened</th>
-	  <th>elderwood</th>
-	  <th>exile</th>
-	  <th>fortune</th>
-	  <th>moonlight</th>
-	  <th>spirit</th>
-	  <th>warlord</th>
-	  <th>boss</th>
-	  <th>tormented</th>
-	  <th>Vanguard</th>
-	</tr>--
-    <tr>
-        <th class="tableheader"></th>
-        <th><div><img id="Cultist"/>
-            <div class="details Cultist"></div></div>
-        </th>
-        <th><div><img id="Divine"/>
-            <div class="details Divine"></div></div>
-        </th>
-        <th><div><img id="Dusk"/>
-            <div class="details Dusk"></div></div>
-        </th>
-        <th><div><img id="Set4_Enlightened"/>
-            <div class="details Set4_Enlightened"></div></div>
-        </th>
-        <th><div><img id="Set4_Elderwood"/>
-            <div class="details Set4_Elderwood"></div></div>
-        </th>
-        <th><div><img id="Set4_Exile"/>
-            <div class="details Set4_Exile"></div></div>
-        </th>
-        <th><div><img id="Fortune"/>
-            <div class="details Fortune"></div></div>
-        </th>
-        <th><div><img id="Moonlight"/>
-            <div class="details Moonlight"></div></div>
-        </th>
-        <th><div><img id="Set4_Ninja"/>
-            <div class="details Set4_Ninja"></div></div>
-        </th>
-        <th><div><img id="Set4_Spirit"/>
-            <div class="details Set4_Spirit"></div></div>
-        </th>
-        <th><div><img id="Warlord"/>
-            <div class="details Warlord"></div></div>
-        </th>
-        <th><div><img id="Boss"/>
-            <div class="details Boss"></div></div>
-        </th>
-        <th><div><img id="Set4_Tormented"/>
-            <div class="details Set4_Tormented"></div></div>
-        </th>
-    </tr>
-    <tr>
-        <th><div><img id="Set4_Adept"/>
-            <div class="details Set4_Adept"></div></div>
-        </th>
-        <td></td>
-        <td>
-            <div class="champion-border TFT4_Irelia"></div>
-        </td>
-        <td></td>
-        <td>
-            <div class="champion-border TFT4_Irelia"></div>
-        </td>
-        <td></td>
-        <td>
-            <div class="champion-border TFT4_Yone"></div>
-        </td>
-        <td></td>
-        <td></td>
-        <td>
-            <div class="champion-border TFT4_Shen"></div>
-        </td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <th><div><img id="Set4_Assassin"/>
-            <div class="details Set4_Assassin"></div></div>
-        </th>
-        <td>
-            <div class="champion-border TFT4_Pyke"></div>
-        </td>
-        <td></td>
-        <td></td>
-        <td>
-            <div class="champion-border TFT4_Talon"></div>
-        </td>
-        <td></td>
-        <td></td>
-        <td>
-            <div class="champion-border TFT4_Katarina"></div>
-        </td>
-        <td>
-            <div class="champion-border TFT4_Diana"></div>
-        </td>
-        <td>
-            <div class="champion-border TFT4_Akali"></div>
-        </td>
-        <td></td>
-        <td>
-            <div class="champion-border TFT4_Katarina"></div>
-        </td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <th><div><img id="Set4_Brawler"/>
-            <div class="details Set4_Brawler"></div></div>
-        </th>
-        <td></td>
-        <td>
-            <div class="champion-border TFT4_Warwick"></div>
-        </td>
-        <td></td>
-        <td></td>
-        <td>
-            <div class="champion-border-half TFT4_Maokai"></div>
-            <div class="champion-border-half TFT4_Nunu"></div>
-        </td>
-        <td></td>
-        <td>
-            <div class="champion-border TFT4_TahmKench"></div>
-        </td>
-        <td>
-            <div class="champion-border TFT4_Sylas"></div>
-        </td>
-        <td></td>
-        <td></td>
-        <td>
-            <div class="champion-border TFT4_Vi"></div>
-        </td>
-        <td>
-            <div class="champion-border TFT4_Sett"></div>
-        </td>
-        <td></td>
-    </tr>
-    <tr>
-        <th><div><img id="Set4_Dazzler"/>
-            <div class="details Set4_Dazzler"></div></div>
-        </th>
-        <td></td>
-        <td>
-            <div class="champion-border TFT4_Lux"></div>
-        </td>
-        <td></td>
-        <td>
-            <div class="champion-border TFT4_Morgana"></div>
-        </td>
-        <td>
-            <div class="champion-border TFT4_Ezreal"></div>
-        </td>
-        <td></td>
-        <td></td>
-        <td>
-            <div class="champion-border TFT4_Lissandra"></div>
-        </td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <th><div><img id="Duelist"/>
-            <div class="details Duelist"></div></div>
-        </th>
-        <td>
-            <div class="champion-border TFT4_Kalista"></div>
-        </td>
-        <td>
-            <div class="champion-border-half TFT4_Jax"></div>
-            <div class="champion-border-half TFT4_LeeSin"></div>
-        </td>
-        <td></td>
-        <td>
-            <div class="champion-border TFT4_Fiora"></div>
-        </td>
-        <td></td>
-        <td>
-            <div class="champion-border TFT4_Yasuo"></div>
-        </td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>
-            <div class="champion-border TFT4_XinZhao"></div>
-        </td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <th><div><img id="Hunter"/>
-            <div class="details Hunter"></div></div>
-        </th>
-        <td></td>
-        <td>
-            <div class="champion-border TFT4_Warwick"></div>
-        </td>
-        <td></td>
-        <td></td>
-        <td>
-            <div class="champion-border TFT4_Ashe"></div>
-        </td>
-        <td></td>
-        <td></td>
-        <td>
-            <div class="champion-border TFT4_Aphelios"></div>
-        </td>
-        <td></td>
-        <td>
-            <div class="champion-border TFT4_Kindred"></div>
-        </td>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <th><div><img id="Keeper"/>
-            <div class="details Keeper"></div></div>
-        </th>
-        <td>
-            <div class="champion-border TFT4_Elise"></div>
-        </td>
-        <td></td>
-        <td>
-            <div class="champion-border TFT4_Riven"></div>
-        </td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>
-            <div class="champion-border TFT4_Kennen"></div>
-        </td>
-        <td></td>
-        <td>
-            <div class="champion-border-half TFT4_JarvanIV"></div>
-            <div class="champion-border-half TFT4_Azir"></div>
-        </td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <th><div><img id="Set4_Mage"/>
-            <div class="details Set4_Mage"></div></div>
-        </th>
-        <td>
-            <div class="champion-border TFT4_TwistedFate"></div>
-        </td>
-        <td></td>
-        <td>
-            <div class="champion-border TFT4_Lillia"></div>
-        </td>
-        <td>
-            <div class="champion-border TFT4_Nami"></div>
-        </td>
-        <td>
-            <div class="champion-border-half TFT4_Lulu"></div>
-            <div class="champion-border-half TFT4_Veigar"></div>
-        </td>
-        <td></td>
-        <td>
-            <div class="champion-border TFT4_Annie"></div>
-        </td>
-        <td></td>
-        <td></td>
-        <td>
-            <div class="champion-border TFT4_Ahri"></div>
-        </td>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <th><div><img id="Set4_Mystic"/>
-            <div class="details Set4_Mystic"></div></div>
-        </th>
-        <td>
-            <div class="champion-border TFT4_Zilean"></div>
-        </td>
-        <td></td>
-        <td>
-            <div class="champion-border TFT4_Cassiopeia"></div>
-        </td>
-        <td>
-            <div class="champion-border TFT4_Janna"></div>
-        </td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>
-            <div class="champion-border TFT4_Shen"></div>
-        </td>
-        <td>
-            <div class="champion-border TFT4_Yuumi"></div>
-        </td>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <th><div><img id="Set4_Shade"/>
-            <div class="details Set4_Shade"></div></div>
-        </th>
-        <td>
-            <div class="champion-border TFT4_Evelynn"></div>
-        </td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>
-            <div class="champion-border TFT4_Zed"></div>
-        </td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>
-            <div class="champion-border TFT4_Kayn"></div>
-        </td>
-    </tr>
-    <tr>
-        <th><div><img id="Sharpshooter"/>
-            <div class="details Sharpshooter"></div></div>
-        </th>
-        <td>
-            <div class="champion-border TFT4_Jhin"></div>
-        </td>
-        <td></td>
-        <td>
-            <div class="champion-border TFT4_Vayne"></div>
-        </td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>
-            <div class="champion-border TFT4_Jinx"></div>
-        </td>
-        <td></td>
-        <td></td>
-        <td>
-            <div class="champion-border TFT4_Teemo"></div>
-        </td>
-        <td>
-            <div class="champion-border TFT4_Nidalee"></div>
-        </td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <th><div><img id="Set4_Vanguard"/>
-            <div class="details Set4_Vanguard"></div></div>
-        </th>
-        <td>
-            <div class="champion-border TFT4_Aatrox"></div>
-        </td>
-        <td>
-            <div class="champion-border TFT4_Wukong"></div>
-        </td>
-        <td>
-            <div class="champion-border TFT4_Thresh"></div>
-        </td>
-        <td></td>
-        <td>
-            <div class="champion-border TFT4_Hecarim"></div>
-        </td>
-        <td></td>
-        <td>
-            <div class="champion-border TFT4_Sejuani"></div>
-        </td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>
-            <div class="champion-border TFT4_Garen"></div>
-        </td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <th><div><img id="Emperor"/>
-            <div class="details Emperor"></div></div></div>
-        </th>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>
-            <div class="champion-border TFT4_Azir"></div>
-        </td>
-        <td></td>
-        <td></td>
-        !-- thirdcell template
+        <!-- thirdcell template
         <td><div class="champion-border-third"><img src="http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png" class="champion-border-size-third tier1"><div class="thirdcell">
             <img src="https://raw.communitydragon.org/latest/game/assets/characters/tft3_zoe/hud/tft3_zoe_square.tft_set3.png"
                  class="thirdcellimg"/></div>
@@ -1099,13 +330,10 @@
             <img src="https://raw.communitydragon.org/latest/game/assets/characters/tft3_syndra/hud/tft3_syndra_square.tft_set3.png"
                  class="thirdcellimg"/></div>
         </div><div class="details TFT3_Syndra"></div></td>
-        --
-    </tr>
-</table>
--->
+        -->
 <script>
     let asdf = 1;
-    const series = "4";
+    let series = 0;
     const baseURL = "http://raw.communitydragon.org/latest/game/";
     const traitsArray = [["Cultist", "Divine", "Dusk", "Enlightened", "Elderwood", "Exile", "Fortune", "Moonlight", "Ninja", "Spirit", "Warlord", "The Boss", "Tormented"], // [0]: Origins
         ["Adept", "Assassin", "Brawler", "Dazzler", "Duelist", "Hunter", "Keeper", "Mage", "Mystic", "Shade", "Sharpshooter", "Vanguard", "Emperor"]]; // [1]: Classes
@@ -1125,16 +353,67 @@
 
     // returns file in string
     function enrich(text) {
+        // get series number
+        series = Object.keys(text.sets).length;
         text = removeOldDuplicates(text);
 
+        buildItemTable();
         buildChampionTable(text.sets[series].traits);
         addChampionPositions(text.sets[series].champions);
 
+        addItemIcons(text.items);
         addChampionIcons(text);
         addTraitIcons(text);
-        addItemDescriptions(text);
+        addItemDescriptions(text.items);
         addTraitDescriptions(text);
         addChampionDescriptions(text);
+        showContent();
+    }
+
+    // build table structure for items
+    function buildItemTable() {
+        let len = 10, fullItemID = 11, item = "item";
+        let itemTable = document.createElement("table");
+        let itemTBody = document.createElement("tbody");
+        let itemTR = document.createElement("tr");
+        let itemTH = document.createElement("th");
+        let itemTD = document.createElement("td");
+        let itemDiv1 = document.createElement("div");
+        let itemDiv2 = document.createElement("div");
+        let itemImg1 = document.createElement("img");
+        let itemImg2 = document.createElement("img");
+        itemTable.classList.add("itemtable");
+
+        itemDiv1.appendChild(itemImg1);
+        itemDiv2.appendChild(itemImg2);
+        itemTH.appendChild(itemDiv1);
+        itemTD.appendChild(itemDiv2);
+        for (let i = 0; i < len; i++) {
+            let baseTH = itemTH.cloneNode(true);
+            baseTH.firstChild.classList.add(item + i);
+            itemTR.appendChild(baseTH);
+        }
+        itemTBody.appendChild(itemTR);
+
+        for (let j = 1; j < len; j++) {
+            let row = itemTR.cloneNode(false);
+            let baseTH = itemTH.cloneNode(true);
+            baseTH.firstChild.classList.add(item + j);
+            row.appendChild(baseTH);
+            fullItemID = 10 + j;
+            for (let i = 1; i < len; i++) {
+                let fullTD = itemTD.cloneNode(true);
+                fullTD.firstChild.classList.add(item + fullItemID++);
+                if (i < j) {
+                    fullItemID += 9;
+                }
+                row.appendChild(fullTD);
+            }
+            itemTBody.appendChild(row);
+        }
+
+        itemTable.appendChild(itemTBody);
+        document.body.appendChild(itemTable);
     }
 
     // build table structure according to current Origins and Classes
@@ -1147,7 +426,6 @@
         let championTD = document.createElement("td");
         let traitDiv = document.createElement("div");
         let traitImg = document.createElement("img");
-        championCorner.classList.add("tableheader");
         championTable.classList.add("championtable");
 
         championTR.appendChild(championCorner);
@@ -1234,6 +512,23 @@
         }
     }
 
+    // add item icons according to prebuild table with ids
+    function addItemIcons(items) {
+        let len = items.length;
+        for (let i = 0; i < len; i++) {
+            let itemCells = document.getElementsByClassName("item" + items[i].id);
+            for (let j = 0; j < itemCells.length; j++) {
+                itemCells[j].firstChild.src = baseURL + items[i].icon.slice(0, -3).toLowerCase() + "png";
+                itemCells[j].firstChild.alt = items[i].name;
+            }
+        }
+
+        // item top left corner: tft_item_bag_questionmark.tft_set4.png
+        let itemCells = document.getElementsByClassName("item0");
+        itemCells[0].firstChild.src = baseURL + "assets/maps/particles/tft/tft_item_bag_questionmark.tft_set4." + "png";
+        itemCells[0].firstChild.alt = "?";
+    }
+
     // add cost borders on champions
     function addChampionIcons(text) {
         let len = text.sets[series].champions.length;
@@ -1274,12 +569,12 @@
     }
 
     // put item descriptions
-    function addItemDescriptions(text) {
-        let len = text.items.length;
+    function addItemDescriptions(items) {
+        let len = items.length;
 
         for (let i = 0; i < len; i++) {
-            descriptionItemCleanup(text.items[i]);
-            putItemDescription(text, text.items[i].id);
+            descriptionItemCleanup(items[i]);
+            putItemDescription(items, items[i].id);
         }
     }
 
@@ -1363,7 +658,7 @@
 
         for (let i = 0; i < document.getElementsByClassName(championApiName).length; i++) {
             let tTD = toolTipDiv.cloneNode(true);
-            document.getElementsByClassName(championApiName)[i].appendChild(tTD); ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            document.getElementsByClassName(championApiName)[i].appendChild(tTD);
         }
     }
 
@@ -1380,11 +675,14 @@
     }
 
     // add description text to item
-    function putItemDescription(text, itemId) {
-        let index = getIndexById(text, itemId);
+    function putItemDescription(items, itemId) {
+        if (itemId === 100) { // do not add tooltip for top left item icon
+            return;
+        }
+        let index = getIndexById(items, itemId);
 
         // stupid bug fix
-        if (text.items[index].name === "Duelist's Zeal") {
+        if (items[index].name === "Duelist's Zeal") {
             if (asdf === 0) {
                 return;
             } else {
@@ -1392,11 +690,15 @@
             }
         }
 
-        let toolTip = "<p><b>" + text.items[index].name + "</b></p><br>";
-        toolTip += "<p>" + text.items[index].desc + "</p>";
+        let toolTip = "<p><b>" + items[index].name + "</b></p><br>";
+        toolTip += "<p>" + items[index].desc + "</p>";
+        let details = document.createElement("div");
+        details.classList.add("details");
+        details.innerHTML += toolTip;
 
-        for (let i = 0; i < document.getElementsByClassName(itemId).length; i++) {
-            document.getElementsByClassName(itemId)[i].innerHTML += toolTip;
+        for (let i = 0; i < document.getElementsByClassName("item" + itemId).length; i++) {
+            let dT = details.cloneNode(true);
+            document.getElementsByClassName("item" + itemId)[i].appendChild(dT);
         }
     }
 
@@ -1425,10 +727,10 @@
     }
 
     // get item array index by Id
-    function getIndexById(jsontext, id) {
-        let len = jsontext.items.length;
+    function getIndexById(items, id) {
+        let len = items.length;
         for (let i = 0; i < len; i++) {
-            if (jsontext.items[i].id === id) {
+            if (items[i].id === id) {
                 return i;
             }
         }
@@ -1446,18 +748,6 @@
         return "";
     }
 
-    // get item array index
-    function getIndexByName(jsontext, str) {
-        let len = jsontext.items.length;
-        for (let i = 0; i < len; i++) {
-            if (jsontext.items[i].name === str) {
-                return i;
-            }
-        }
-
-        return -1;
-    }
-
     // bugfix due to duplicate ids in json in items
     function removeOldDuplicates(jsontext) {
         let len = jsontext.items.length, tmp;
@@ -1471,7 +761,7 @@
 
         // remove items via item name
         let rmStr = ["Youmuu's Ghostblade", "Blade of the Ruined King", "Inferno's Cinder", "Mages Cap", "Warden's Mail", "Talisman of Light", "Frozen Mallet", "Berserker's Axe",
-            "Infiltrator's Talon", "Battlecast Plating", "Star Guardian's Charm", "Rebel Medal", "Celestial Orb", "Protector's Chestguard", "Dark Star's Heart"];// for items that are used from previous tft-sets
+            "Infiltrator's Talons", "Battlecast Plating", "Star Guardian's Charm", "Rebel Medal", "Celestial Orb", "Protector's Chestguard", "Dark Star's Heart"];// for items that are used from previous tft-sets
 
         for (let i = 0; i < len; i++) {
             if (jsontext.items[i].id === 89 && jsontext.items[i].name === rmStr[0]) {
@@ -1806,6 +1096,13 @@
             }
 
             ability.desc = ability.desc.replace("@" + keyStr + "@", valuesStr);
+        }
+    }
+
+    function showContent() {
+        let len = document.body.childNodes.length;
+        for (let i = 0; i < len; i++) {
+            document.body.childNodes[i].style = "visibility: visible";
         }
     }
 </script>
