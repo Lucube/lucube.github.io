@@ -29,7 +29,7 @@
             display: flex;
             flex-wrap: wrap;
             flex-direction: column;
-            height: 625px;
+            height: 633px;
             justify-content: flex-end;
         }
 
@@ -301,7 +301,7 @@
 
         @media all and (max-width: 1030px) {
             body {
-                height: 1250px;
+                height: 1200px;
                 justify-content: flex-start;
             }
             #navbar, .itemtable, .championtable {
@@ -337,6 +337,7 @@
     const baseURL = "http://raw.communitydragon.org/latest/game/";
     const traitsArray = [["Cultist", "Divine", "Dusk", "Enlightened", "Elderwood", "Exile", "Fortune", "Moonlight", "Ninja", "Spirit", "Warlord", "The Boss", "Tormented"], // [0]: Origins
         ["Adept", "Assassin", "Brawler", "Dazzler", "Duelist", "Hunter", "Keeper", "Mage", "Mystic", "Shade", "Sharpshooter", "Vanguard", "Emperor"]]; // [1]: Classes
+    const itemsArray = [0, 1, 2, 3, 4, 5, 6, 7, 9, 8];
 
     function init() {
         let file = "http://raw.communitydragon.org/latest/cdragon/tft/en_gb.json";
@@ -390,7 +391,7 @@
         itemTD.appendChild(itemDiv2);
         for (let i = 0; i < len; i++) {
             let baseTH = itemTH.cloneNode(true);
-            baseTH.firstChild.classList.add(item + i);
+            baseTH.firstChild.classList.add(item + itemsArray[i]);
             itemTR.appendChild(baseTH);
         }
         itemTBody.appendChild(itemTR);
@@ -398,12 +399,23 @@
         for (let j = 1; j < len; j++) {
             let row = itemTR.cloneNode(false);
             let baseTH = itemTH.cloneNode(true);
-            baseTH.firstChild.classList.add(item + j);
+            baseTH.firstChild.classList.add(item + itemsArray[j]);
             row.appendChild(baseTH);
             fullItemID = 10 + j;
             for (let i = 1; i < len; i++) {
+                let x = itemsArray[Math.floor(fullItemID/10)];
+                let y = itemsArray[fullItemID%10];
+                if (x > y) {
+                    console.log("x: " + x + ", y: " + y);
+                    x *= y;
+                    y = x / y;
+                    x /= y;
+                    console.log("x: " + x + ", y: " + y);
+                }
+
                 let fullTD = itemTD.cloneNode(true);
-                fullTD.firstChild.classList.add(item + fullItemID++);
+                fullTD.firstChild.classList.add(item + (x*10 + y));
+                fullItemID++;
                 if (i < j) {
                     fullItemID += 9;
                 }
