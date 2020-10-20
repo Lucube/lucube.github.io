@@ -275,6 +275,7 @@
             padding: 12px;
             margin: 10px 0;
             max-width: 360px;
+            font-weight: normal;
         }
 
         .details * {
@@ -406,11 +407,9 @@
                 let x = itemsArray[Math.floor(fullItemID/10)];
                 let y = itemsArray[fullItemID%10];
                 if (x > y) {
-                    console.log("x: " + x + ", y: " + y);
                     x *= y;
                     y = x / y;
                     x /= y;
-                    console.log("x: " + x + ", y: " + y);
                 }
 
                 let fullTD = itemTD.cloneNode(true);

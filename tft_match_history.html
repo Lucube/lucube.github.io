@@ -30,6 +30,9 @@
 			form {
 				margin: 12px;
 			}
+			span {
+				margin: 0 5px;
+			}
 			#back {
 				font-size: 24px;
 				color: #fff;
@@ -59,23 +62,35 @@
 				position: relative;
 			}
 			#outputheader {
-				height: 128px;
+				box-sizing: border-box;
+				height: 168px;
 				width: 100%;
 				background: rgb(95, 95, 97);
 				padding: 20px;
+				overflow: hidden;
 			}
 			#outputbody {
 				height: 100%;
 				width: 100%;
 				padding: 20px;
-
+				box-sizing: border-box;
 				display: flex;
 				flex-direction: column;
+			}
+			.statcontainer {
+				position: absolute;
+				overflow: hidden;
+				top: 0;
+				width: 21px;
+			}
+			.staticon {
+				height: 256px;
+				width: 512px;
 			}
 		</style>
 	</head>
 	
-	<body>
+	<body onload="init2()">
 		<a href="index.html" id="back"><</a>
 		<div id="summonerForm">
 			<label for="sname">Summoner name: </label>
@@ -91,9 +106,22 @@
 			<div id="output">
 			</div>
 		</div>
-		
-		<!-- JS -->
+
 		<script>
+			let jsontext;
+
+			function init2() {
+				let file = "http://raw.communitydragon.org/latest/cdragon/tft/en_gb.json";
+				let xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function () {
+					if (this.readyState === 4 && this.status === 200) {
+						jsontext = JSON.parse(this.responseText);
+					}
+				};
+				xhttp.open("GET", file, true);
+				xhttp.send();
+			}
+
 			// submit on enter
 			let input = document.getElementById("sname");
 			input.addEventListener("keyup", function(event) {
@@ -104,11 +132,11 @@
 			});
 
 			// get Details
-		    let key = "", puuid = "";
-		    const numberOfMatches = 10;
-		
-		    function init() {
-		    	puuid = "";
+			let key = "", puuid = "";
+			const numberOfMatches = 10;
+
+			function init() {
+				puuid = "";
 				let outputheader = document.getElementById("outputheader");
 				let outputbody = document.getElementById("outputbody");
 				if (outputheader !== null) {
@@ -118,22 +146,22 @@
 					outputbody.remove();
 				}
 
-			    getSummonerBySummonerName();
+				getSummonerBySummonerName();
 			}
-			
+
 			function getSummonerBySummonerName() {
-			    $.ajax({
-				    url: buildUrl(),
+				$.ajax({
+					url: buildUrl(),
 					method: "POST",
 					contentType: "application/x-www-form-urlencoded",
 					data: {
-					    url: getSummonerBySummonerApiUrl(),
+						url: getSummonerBySummonerApiUrl(),
 						token: getApiKey()
 					}
 				}).done(function (data) {
-				    buildOutputViewHeader(JSON.parse(data));
+					buildOutputViewHeader(JSON.parse(data));
 				}).fail(function (data) {
-				    console.log(data);
+					console.log(data);
 				});
 			}
 
@@ -163,27 +191,28 @@
 						token: getApiKey()
 					}
 				}).done(function (data) {
+					console.log(JSON.parse(data));
 					buildOutputViewBody(JSON.parse(data));
 				}).fail(function (data) {
 					console.log(data);
 				});
 			}
-			
+
 			function getSummonerBySummonerApiUrl() {
-			    let region;
-				
+				let region;
+
 				// get the region
 				if (document.getElementById("EUW1").checked) {
-				    region = document.getElementById("EUW1").value;
+					region = document.getElementById("EUW1").value;
 				}
-			
-			    return "https://" + region + ".api.riotgames.com/tft/summoner/v1/summoners/by-name/" + document.getElementById("sname").value;
+
+				return "https://" + region + ".api.riotgames.com/tft/summoner/v1/summoners/by-name/" + document.getElementById("sname").value;
 			}
 
 			function getMatchesBySummonerApiUrl() {
-		    	let region;
+				let region;
 
-		    	// get the region
+				// get the region
 				if (document.getElementById("EUW1").checked) {
 					region = "europe";
 				}
@@ -192,57 +221,56 @@
 			}
 
 			function getDetailsByMatchApiUrl(match) {
-		    	let region;
+				let region;
 
-		    	// get the region
+				// get the region
 				if (document.getElementById("EUW1").checked) {
 					region = "europe";
 				}
 
 				return "https://" + region + ".api.riotgames.com/tft/match/v1/matches/" + match;
 			}
-			
+
 			function getApiKey() {
-			    if (key === "") {
-				    requestKey();
+				if (key === "") {
+					requestKey();
 				}
-				
-			    return key;
+
+				return key;
 			}
-			
-			function buildUrl() {				
-			    return "https://ni43716-2.web04.nitrado.hosting/backend_interface.php";
+
+			function buildUrl() {
+				return "https://ni43716-2.web04.nitrado.hosting/backend_interface.php";
 			}
-			
+
 			function requestKey() {
 				key = prompt("Please enter a Riot Games API Key");
 			}
 
 			// build output views
 			function buildOutputViewHeader(data) {
-		    	puuid = data.puuid;
-		    	addSummonerInfo(data);
+				puuid = data.puuid;
+				addSummonerInfo(data);
 				getMatchesBySummonerPUUID();
 			}
 
 			function buildOutputViewBody(data) {
-
-
 				addMatchInfo(data);
+
 			}
 
 			function addSummonerInfo(data) {
 				let parentEle = document.getElementById("output");
 				let header = document.createElement("div");
-		    	let icon = document.createElement("img");
-		    	let crest = document.createElement("img");
-		    	let lvl = document.createElement("p");
-		    	let name = document.createElement("div");
+				let icon = document.createElement("img");
+				let crest = document.createElement("img");
+				let lvl = document.createElement("p");
+				let name = document.createElement("div");
 
-		    	header.id = "outputheader";
+				header.id = "outputheader";
 
-		    	icon.style = "border-radius: 50%; transform: scale(0.85,0.85); padding-top: 4px;";
-		    	icon.src = "http://raw.communitydragon.org/latest/game/assets/ux/summonericons/profileicon" + data.profileIconId + ".png";
+				icon.style = "border-radius: 50%; transform: scale(0.85,0.85); padding-top: 4px;";
+				icon.src = "http://raw.communitydragon.org/latest/game/assets/ux/summonericons/profileicon" + data.profileIconId + ".png";
 
 				crest.style = "position: absolute; top: -44px; left: -44px;";
 				crest.src = getLvlCrest(data.summonerLevel);
@@ -265,53 +293,68 @@
 				name.innerHTML = data.name;
 
 				header.appendChild(icon);
-		    	header.appendChild(crest);
-		    	header.appendChild(lvl);
-		    	header.appendChild(name);
-		    	parentEle.appendChild(header);
+				header.appendChild(crest);
+				header.appendChild(lvl);
+				header.appendChild(name);
+				parentEle.appendChild(header);
 			}
 
 			function getLvlCrest(level) {
 				if (level < 30) {
 					return "http://raw.communitydragon.org/latest/game/assets/loadouts/regalia/crests/prestige/prestige_crest_lvl_001.png";
 				}
-		    	else if (level < 50) {
+				else if (level < 50) {
 					return "http://raw.communitydragon.org/latest/game/assets/loadouts/regalia/crests/prestige/prestige_crest_lvl_030.png";
 				}
-		    	else if (level < 75) {
-		    		return "http://raw.communitydragon.org/latest/game/assets/loadouts/regalia/crests/prestige/prestige_crest_lvl_050.png";
+				else if (level < 75) {
+					return "http://raw.communitydragon.org/latest/game/assets/loadouts/regalia/crests/prestige/prestige_crest_lvl_050.png";
 				}
-		    	else if (level < 100) {
+				else if (level < 100) {
 					return "http://raw.communitydragon.org/latest/game/assets/loadouts/regalia/crests/prestige/prestige_crest_lvl_075.png";
 				}
-		    	else if (level >= 500) {
+				else if (level >= 500) {
 					return "http://raw.communitydragon.org/latest/game/assets/loadouts/regalia/crests/prestige/prestige_crest_lvl_500.png";
 				}
-		    	else {
+				else {
 					return "http://raw.communitydragon.org/latest/game/assets/loadouts/regalia/crests/prestige/prestige_crest_lvl_" + (level - (level % 25)) + ".png";
 				}
 			}
 
 			function addMatchInfo(data) {
-		    	let participant = getParticipantNr(data.info.participants);
+				let participant = getParticipantNr(data.info.participants);
 
 				// build html elements
 				let body = document.getElementById("outputbody");
 				let column = document.createElement("div");
 				let rowOne = document.createElement("div");
 				let rowTwo = document.createElement("div");
+				let rowThree = document.createElement("div");
+				let rowFour = document.createElement("div");
 				// displayed elements
 				let companion = document.createElement("img");
 				let placement = document.createElement("div");
+				let setNumber = document.createElement("div");
 				let gameType = document.createElement("div");
 				let date = document.createElement("div");
 				let gameLength = document.createElement("div");
+				// additional stats table
+				let t = document.createElement("table");
+				let tbody = document.createElement("tbody");
+				let tr = document.createElement("tr");
+				let stat = [[],[],[]];
+				for (let i = 0; i <= 2; i++) {
+					for (let j = 0; j <= 5; j++) {
+						stat[i][j] = document.createElement("td");
+					}
+				}
 
 				column.id = "t" + data.info.game_datetime;
-				column.style = "border-bottom: solid 2px #ccc;";
+				column.style = "border-bottom: solid 2px #ccc; overflow-x: hidden;";
 
 				rowOne.style = "padding: 34px 30px 26px 0px; position: relative; display: inline-block;";
 				rowTwo.style = "position: relative; display: inline-block; vertical-align: top; height: 100%; margin-left: 5px;";
+				rowThree.style = "position: relative; display: inline-block; padding: 5px 20px; vertical-align: top;";
+				rowFour.style = "position: relative; display: inline-block; vertical-align: top;"
 
 				companion.style = "object-fit: cover; height: 60px; width: 60px; object-position: 50% 50%; transform: scale(2.0, 2.0); margin-left: 35px; border-radius: 50%;";
 				companion.src = "http://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/" + getCompanionPath(data.info.participants[participant].companion.content_ID);
@@ -330,6 +373,10 @@
 					placement.innerHTML = data.info.participants[participant].placement + "<sup>th</sup>";
 				}
 
+				setNumber.style = "font-weight: bold; line-height: 1.5; font-size: 20px; text-align: center;";
+				setNumber.innerHTML = data.info.tft_set_number === 1 ? "Base" : data.info.tft_set_number === 2 ? "War of the Elements" :
+						data.info.tft_set_number === 3 ? "Galaxies" : data.info.tft_set_number === 4 ? "Journeys" : "unknown";
+
 				gameType.style = "font-weight: bold; line-height: 1.5;";
 				if (data.info.queue_id === 1100) {
 					gameType.innerHTML = "Ranked";
@@ -340,21 +387,97 @@
 
 				let minutes = Math.floor(data.info.participants[participant].time_eliminated / 60);
 				let seconds = Math.floor(data.info.participants[participant].time_eliminated % 60);
-				gameLength.innerHTML = ("0" + minutes).slice(-2) + ":" + ("0" + seconds).slice(-2); //total game time: + " / " + ("0" + Math.floor(data.info.game_length / 60)).slice(-2) + ":" + ("0" + Math.floor(data.info.game_length % 60)).slice(-2);
+				gameLength.innerHTML = ("0" + minutes).slice(-2) + ":" + ("0" + seconds).slice(-2);
 
 				let d = new Date(data.info.game_datetime);
-				date.innerHTML = "<br><br><br>" + ("0" + d.getDate()).slice(-2) + "/" + ("0" + (d.getMonth() + 1)).slice(-2) + "/" + d.getFullYear() + " " +
-							+ ("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2);
+				date.innerHTML = "<br><br>" + ("0" + d.getDate()).slice(-2) + "/" + ("0" + (d.getMonth() + 1)).slice(-2) + "/" + d.getFullYear() + " " +
+						+ ("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2);
+
+				// additional stats in third column
+				stat[0][0].style = "font-weight: bold; line-height: 1.5;";
+				stat[0][0].colSpan = "3";
+				stat[0][0].innerHTML = "End of game stats";
+				stat[1][1].style = "width: 150px;";
+				stat[1][1].innerHTML = "Level";
+				stat[2][1].style = "width: 25px; text-align: center;"
+				stat[2][1].innerHTML = data.info.participants[participant].level;
+				stat[1][2].innerHTML = "Gold left";
+				stat[2][2].style = "width: 25px; text-align: center;"
+				stat[2][2].innerHTML = data.info.participants[participant].gold_left;
+				stat[1][3].innerHTML = "Last round";
+				stat[2][3].style = "width: 25px; text-align: center;"
+				stat[2][3].innerHTML = Math.floor(data.info.participants[participant].last_round / 10) + "-" + (data.info.participants[participant].last_round % 10);
+				stat[1][4].innerHTML = "Damage dealt";
+				stat[2][4].style = "width: 25px; text-align: center;"
+				stat[2][4].innerHTML = data.info.participants[participant].total_damage_to_players;
+				stat[1][5].innerHTML = "Players eliminated  ";
+				stat[2][5].style = "width: 25px; text-align: center;"
+				stat[2][5].innerHTML = data.info.participants[participant].players_eliminated;
+
+				// icons for stats
+				for (let i = 1; i <= 5; i++) {
+					let statContainer = document.createElement("div");
+					let statIcon = document.createElement("img");
+					stat[0][i].style = "position: relative; width: 21px; height: 21px; overflow: hidden;";
+					statContainer.classList.add("statcontainer");
+					statIcon.classList.add("staticon");
+					statIcon.src = "http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/home/tftm_home_texture_atlas.png";
+
+					statContainer.appendChild(statIcon);
+					stat[0][i].appendChild(statContainer);
+				}
+				stat[0][1].firstChild.firstChild.style = "margin: -58px 0 0 -24px;";
+				stat[0][2].firstChild.firstChild.style = "margin: -142px 0 0;";
+				stat[0][3].firstChild.firstChild.style = "margin: -217px 0 0;";
+				stat[0][4].firstChild.firstChild.style = "margin: -77px 0 0 -20px;";
+				stat[0][5].firstChild.firstChild.style = "margin: -190.5px 0 0;";
+
+				// fourth column: stats about traits and units
+				let trait = document.createElement("div");
+				let unit = document.createElement("div");
+				let traits = [];
+				for (let i = 0; i < data.info.participants[participant].traits.length; i++) {
+					traits[i] = document.createElement("img");
+					traits[i].src = getTraitIcon(data.info.participants[participant].traits[i].name);
+					traits[i].alt = getTraitName(data.info.participants[participant].traits[i].name);
+					trait.appendChild(traits[i]);
+				}
+				let units = [];
+				for (let i = 0; i < data.info.participants[participant].units.length; i++) {
+					units[i] = document.createElement("img");
+					units[i].src = getChampionIcon(data.info.participants[participant].units[i].character_id);
+					units[i].alt = getChampionName(data.info.participants[participant].units[i].character_id);
+					units[i].style = "width: 32px; height: 32px;"
+					unit.appendChild(units[i]);
+				}
 
 				// add elements
 				rowOne.appendChild(companion);
 				rowOne.appendChild(placement);
+				rowTwo.appendChild(setNumber);
 				rowTwo.appendChild(gameType);
 				rowTwo.appendChild(gameLength);
 				rowTwo.appendChild(date);
+				for (let i = 1; i <= 5; i++) {
+					let row = tr.cloneNode(true);
+
+					row.appendChild(stat[0][i]);
+					if (i !== 0) {
+						row.appendChild(stat[2][i]);
+						row.appendChild(stat[1][i]);
+					}
+					tbody.appendChild(row);
+				}
+
+				t.appendChild(tbody);
+				rowThree.appendChild(t);
+				rowFour.appendChild(trait);
+				rowFour.appendChild(unit);
 
 				column.appendChild(rowOne);
 				column.appendChild(rowTwo);
+				column.appendChild(rowThree);
+				column.appendChild(rowFour);
 
 				// add matches chronological
 				if (body.children.length === 0) {
@@ -373,8 +496,71 @@
 				}
 			}
 
+			// @para: apiName
+			function getTraitIcon(apiName) {
+				let series = Object.keys(jsontext.sets).length;
+				let traits = jsontext.sets[series].traits;
+				let len = traits.length;
+
+				for (let i = 0; i < len; i++) {
+					if (traits[i].apiName === apiName) {
+						return "http://raw.communitydragon.org/latest/game/" + (traits[i].icon.slice(0, -3).toLowerCase()) + "png";
+					}
+				}
+
+				return "";
+			}
+
+			// @para: apiName
+			function getChampionIcon(apiName) {
+				let series = Object.keys(jsontext.sets).length;
+				let champions = jsontext.sets[series].champions;
+				let len = champions.length;
+
+				for (let i = 0; i < len; i++) {
+					if (champions[i].apiName === apiName) {
+						let endStr = champions[i].icon.slice("ASSETS/UX/TFT/ChampionSplashes/".length, -3);
+						let dotPos = endStr.indexOf(".");
+
+						return ("http://raw.communitydragon.org/latest/game/" + "ASSETS/Characters/" + champions[i].apiName + "/HUD/" + endStr.slice(0, dotPos) + "_square" + endStr.slice(dotPos) + "png").toLowerCase();
+					}
+				}
+
+				return "";
+			}
+
+			// @para: apiName
+			function getTraitName(apiName) {
+				let series = Object.keys(jsontext.sets).length;
+				let traits = jsontext.sets[series].traits;
+				let len = traits.length;
+
+				for (let i = 0; i < len; i++) {
+					if (traits[i].apiName === apiName) {
+						return traits[i].name;
+					}
+				}
+
+				return "";
+			}
+
+			// @para: apiName
+			function getChampionName(apiName) {
+				let series = Object.keys(jsontext.sets).length;
+				let champions = jsontext.sets[series].champions;
+				let len = champions.length;
+
+				for (let i = 0; i < len; i++) {
+					if (champions[i].apiName === apiName) {
+						return champions[i].name;
+					}
+				}
+
+				return "";
+			}
+
 			function retrieveMatches(data) {
-		    	let len = data.length;
+				let len = data.length;
 				let parentEle = document.getElementById("output");
 				let body = document.createElement("div");
 
@@ -386,22 +572,22 @@
 				body.id = "outputbody";
 				parentEle.appendChild(body);
 
-		    	for (let i = 0; i < len; i++) {
+				for (let i = 0; i < len; i++) {
 					getDetailsByMatch(data[i]);
 				}
 			}
 
 			function getParticipantNr(data) {
-		    	for (let i = 0; i < 8; i++) {
-		    		if (data[i].puuid === puuid) {
-		    			return i;
+				for (let i = 0; i < 8; i++) {
+					if (data[i].puuid === puuid) {
+						return i;
 					}
 				}
-		    	return -1;
+				return -1;
 			}
 
 			function getCompanionPath(id) {
-		    	let companions = null;
+				let companions = null;
 				$.ajax({
 					url: "http://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/companions.json",
 					method: "GET",
@@ -412,22 +598,23 @@
 					console.log(data);
 				});
 
-		    	for (let i = 0; i < companions.length; i++) {
-		    		if (companions[i].contentId === id) {
-		    			let pathstr = "";
-		    			let path = companions[i].loadoutsIcon.split("/");
-		    			path.shift();
-		    			path.shift();
-		    			path.shift();
+				for (let i = 0; i < companions.length; i++) {
+					if (companions[i].contentId === id) {
+						let pathstr = "";
+						let path = companions[i].loadoutsIcon.split("/");
+						path.shift();
+						path.shift();
+						path.shift();
 
-		    			for (let j = 0; j < path.length-1; j++) {
-		    				pathstr += path[j] + "/";
+						for (let j = 0; j < path.length-1; j++) {
+							pathstr += path[j] + "/";
 						}
-		    			return (pathstr + path[path.length-1]).toLowerCase();
+						return (pathstr + path[path.length-1]).toLowerCase();
 					}
 				}
-		    	return "";
+				return "";
 			}
 		</script>
+		<!-- JS -->
 	</body>
 </html>

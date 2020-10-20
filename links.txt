@@ -15,3 +15,13 @@ http://raw.communitydragon.org/latest/game/assets/loadouts/regalia
 Summoner icons:
 http://raw.communitydragon.org/latest/game/assets/ux/summonericons/
 
+Sprites:
+http://raw.communitydragon.org/latest/game/assets/ux/
+Champion Border:
+http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_unitshop_cards_texture_atlas.png
+Star-Level:
+http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_scoreboard_texture_atlas.png
+Trait Level:
+http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/ingame/tftm_traits_texture_atlas.png
+for game stats (?):
+http://raw.communitydragon.org/latest/game/assets/ux/tftmobile/home/tftm_home_texture_atlas.png
